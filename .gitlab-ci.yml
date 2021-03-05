@@ -35,7 +35,7 @@ deploy-beta:
     - yarn deploy:beta
   environment:
     name: beta
-    url: https://whylabs-website-deployment-beta.netlify.app
+    url: https://whylabs-docs-dev.netlify.app/
   dependencies:
     - build
   only:
@@ -48,7 +48,7 @@ deploy-prod:
     - yarn deploy:prod
   environment:
     name: prod
-    url: https://whylabs.ai
+    url: https://docs.whylabs.ai
   when: manual
   only:
     - mainline
