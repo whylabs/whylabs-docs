@@ -2,7 +2,7 @@ module.exports = {
   title: 'WhyLabs Documentation',
   tagline: 'Open standard and platform for data logging',
   url: 'https://whylabs.ai',
-  baseUrl: '/',
+  baseUrl: '/docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -17,8 +17,8 @@ module.exports = {
       },
       items: [
         {
-          to: 'docs/',
-          activeBasePath: 'docs',
+          to: '/',
+          activeBasePath: '/',
           label: 'Docs',
           position: 'left',
         },
@@ -37,12 +37,8 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Style Guide',
-              to: 'docs/',
-            },
-            {
-              label: 'Second Doc',
-              to: 'docs/doc2/',
+              label: 'Documentation',
+              to: '/',
             },
           ],
         },
