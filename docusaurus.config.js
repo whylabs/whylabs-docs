@@ -12,7 +12,7 @@ module.exports = {
     navbar: {
       title: 'WhyLabs',
       logo: {
-        alt: 'WhyLabs logo',
+        alt: 'WhyLabs Logo',
         src: 'img/logo-256x256.png',
       },
       items: [
@@ -65,7 +65,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${ new Date().getFullYear() } WhyLabs.`,
+      copyright: `Copyright © ${ new Date().getFullYear() } WhyLabs, Inc. All Rights Reserved.`,
     },
   },
   presets: [
