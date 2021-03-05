@@ -8,7 +8,11 @@ To contribute, please follow these steps:
 
 [[_TOC_]]
 
-## Requirements
+
+## Git-based Workflow
+* Useful if you want to preview content locally and make styling changes
+
+### Requirements
 
 - Git CLI
 - [Node.js](https://nodejs.org/en/download/) version >= 12.13.0 or above (which can be checked by running `node -v`).
@@ -16,8 +20,9 @@ To contribute, please follow these steps:
 - [Yarn](https://yarnpkg.com/en/) version >= 1.5 (which can be checked by running `yarn --version`). Yarn is a
   performant package manager for JavaScript and replaces the `npm` client.
 
-## Clone and branching
+### Clone and branching
 
+* Check out and create your local branch
 ```
 git clone git@gitlab.com:whylabs/public/whylabs-docs.git
 cd whylabs-docs
@@ -25,7 +30,7 @@ yarn install
 git checkout -b docs-your-edit
 ```
 
-## Make your edits
+### Make your edits
 
 * Please make your local edits
   
@@ -40,7 +45,7 @@ yarn start
 This command starts a local development server and open up a browser window. Most changes are reflected live without
 having to restart the server.
 
-## Build
+### Build
 
 * Docusaurus will fail if there are broken links in the documentation (even though it will run the preview fine)
 * To test the Docusaurus build, run
@@ -49,11 +54,7 @@ having to restart the server.
 yarn build
 ```
 
-
-
-## Git-based Workflows
-
-* Useful if you want to preview content locally and make styling changes
+### Commit
 
 * You'll need to commit your local branch first using Git
 
@@ -94,11 +95,10 @@ You can add multiple reviewers:
 
 ![Preview website link](dev/pr-demo8.png)
 
-* You can visit the website to check out the doc. Make sure you append `/_docs` to the preview link. Your link should look 
-like this:
+* You can visit the website to check out the preview draft site:
   
 ```
-https://<unique-id>-whylabs-docs-dev.netlify.app/docs
+https://<unique-id>-whylabs-docs-dev.netlify.app
 ```
 
 * As a reviewer, you should do your due diligence as well by following these steps!
@@ -110,7 +110,7 @@ https://<unique-id>-whylabs-docs-dev.netlify.app/docs
 
 ![Pipeline preview](dev/pr-demo9.png)
 
-* Please check out the beta preview link before deploying to Prod: https://whylabs-docs-dev.netlify.app/docs
+* Please check out the beta preview link before deploying to Prod: https://whylabs-docs-dev.netlify.app/
 
 ![Beta](dev/pr-demo10.png)
 
@@ -121,7 +121,41 @@ https://<unique-id>-whylabs-docs-dev.netlify.app/docs
   
 ## Browser-based Workflow
 
-[TBD]
-* Navigate to the [docs](https://gitlab.com/whylabs/public/whylabs-docs/-/tree/mainline/docs) directory in GitLab
-* Follow GitLab Web IDE instructions to make changes
-* Preview should appear whne you create a merge request
+* Navigate to the [docs](https://gitlab.com/whylabs/public/whylabs-docs/-/tree/mainline/docs) directory in GitLab. You'll
+  find the Web IDE button in the top right corner
+  
+  ![Web IDE](dev/web-step1.png)
+
+* Clicking this should take you to a browser-based IDE
+
+  ![Web IDE with files](dev/web-step2.png)
+
+* Select the markdown file and make the edit. 
+  
+  ![Making edits](dev/web-step3.png)
+
+* You should be able to click "Preview Markdown" for seeing changes
+
+  ![Preview markdown](dev/web-step4.png)
+
+* You can also upload images to the *static* folder, which maps to `/` of the site. THen you should be able to link to
+  it in the markdown documentation. It's recommended that you add the document slug as the prefix for the image
+  
+  ![Images](dev/web-step5.png)
+
+* Once you're  ready, you and review the changes here
+  ![See diffs](dev/web-step6.png)
+  
+* If you're happy with the change, you can create a branch with a commit, and kick off a merge request
+
+  ![Commit](dev/web-step7.png)
+
+* You should be able to double check the diff in the "Changes" tab of the PR:
+   ![Diff view](dev/web-step8.png)
+  
+* The merge request should spit out a draft URL in the log (see the navigation from Merge request -> build log) in the Git
+workflow above. Make sure you add **/docs** to the URL
+   ![Build log](dev/web-step9.png)
+  
+* The preview site should give you a rendering with your changes like [this link](https://6042a48f6b86ed00870bca09--whylabs-docs-dev.netlify.app/):
+  ![Preview](dev/web-step10.png)
