@@ -1,6 +1,6 @@
 ---
-id: logger
-title: whylogs Logger
+id: open-spec
+title: Open Specification
 ---
 
 A batch is a collection of datapoints, often grouped by time.
