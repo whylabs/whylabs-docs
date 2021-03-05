@@ -1,3 +1,4 @@
+const apis = require('./docs/whylogs-api/sidebar.json')
 module.exports = {
   docs: [
     'intro',
@@ -8,5 +9,8 @@ module.exports = {
       "WhyLabs Platform": ['whylabs-api', 'whylabs-architecture'],
     },
     'external-resources',
+    {
+      "whylogs API": apis.items[0].items,
+    }
   ],
 };

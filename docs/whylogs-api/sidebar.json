@@ -1,0 +1,137 @@
+{
+  "items": [
+    {
+      "items": [
+        {
+          "items": [
+            "whylogs-api/whylogs/core/summaryconverters",
+            "whylogs-api/whylogs/core/annotation_profiling",
+            "whylogs-api/whylogs/core/image_profiling",
+            "whylogs-api/whylogs/core/datasetprofile",
+            "whylogs-api/whylogs/core/model_profile",
+            "whylogs-api/whylogs/core/columnprofile",
+            {
+              "items": [
+                "whylogs-api/whylogs/core/statistics/schematracker",
+                "whylogs-api/whylogs/core/statistics/counterstracker",
+                "whylogs-api/whylogs/core/statistics/thetasketch",
+                "whylogs-api/whylogs/core/statistics/constraints",
+                "whylogs-api/whylogs/core/statistics/numbertracker",
+                {
+                  "items": [
+                    "whylogs-api/whylogs/core/statistics/datatypes/variancetracker",
+                    "whylogs-api/whylogs/core/statistics/datatypes/floattracker",
+                    "whylogs-api/whylogs/core/statistics/datatypes/integertracker",
+                    "whylogs-api/whylogs/core/statistics/datatypes/stringtracker"
+                  ],
+                  "label": "whylogs.core.statistics.datatypes",
+                  "type": "category"
+                }
+              ],
+              "label": "whylogs.core.statistics",
+              "type": "category"
+            },
+            {
+              "items": [
+                "whylogs-api/whylogs/core/metrics/model_metrics",
+                "whylogs-api/whylogs/core/metrics/confusion_matrix"
+              ],
+              "label": "whylogs.core.metrics",
+              "type": "category"
+            },
+            {
+              "items": [
+                "whylogs-api/whylogs/core/types/typeddataconverter"
+              ],
+              "label": "whylogs.core.types",
+              "type": "category"
+            }
+          ],
+          "label": "whylogs.core",
+          "type": "category"
+        },
+        {
+          "items": [
+            "whylogs-api/whylogs/app/config",
+            "whylogs-api/whylogs/app/output_formats",
+            "whylogs-api/whylogs/app/session",
+            "whylogs-api/whylogs/app/writers",
+            "whylogs-api/whylogs/app/logger"
+          ],
+          "label": "whylogs.app",
+          "type": "category"
+        },
+        {
+          "items": [
+            "whylogs-api/whylogs/util/time",
+            "whylogs-api/whylogs/util/stats",
+            "whylogs-api/whylogs/util/dsketch",
+            "whylogs-api/whylogs/util/protobuf",
+            "whylogs-api/whylogs/util/varint",
+            "whylogs-api/whylogs/util/data"
+          ],
+          "label": "whylogs.util",
+          "type": "category"
+        },
+        {
+          "items": [
+            "whylogs-api/whylogs/io/file_loader"
+          ],
+          "label": "whylogs.io",
+          "type": "category"
+        },
+        {
+          "items": [
+            "whylogs-api/whylogs/features/transforms"
+          ],
+          "label": "whylogs.features",
+          "type": "category"
+        },
+        {
+          "items": [
+            "whylogs-api/whylogs/mlflow/__init__",
+            "whylogs-api/whylogs/mlflow/model_wrapper",
+            "whylogs-api/whylogs/mlflow/patcher"
+          ],
+          "label": "whylogs.mlflow",
+          "type": "category"
+        },
+        {
+          "items": [
+            "whylogs-api/whylogs/cli/cli",
+            "whylogs-api/whylogs/cli/init",
+            "whylogs-api/whylogs/cli/demo_cli"
+          ],
+          "label": "whylogs.cli",
+          "type": "category"
+        },
+        {
+          "items": [
+            "whylogs-api/whylogs/viz/base",
+            "whylogs-api/whylogs/viz/visualizer",
+            {
+              "items": [
+                "whylogs-api/whylogs/viz/matplotlib/visualizer"
+              ],
+              "label": "whylogs.viz.matplotlib",
+              "type": "category"
+            }
+          ],
+          "label": "whylogs.viz",
+          "type": "category"
+        },
+        {
+          "items": [
+            "whylogs-api/whylogs/logs/__init__"
+          ],
+          "label": "whylogs.logs",
+          "type": "category"
+        }
+      ],
+      "label": "whylogs",
+      "type": "category"
+    }
+  ],
+  "label": "Reference",
+  "type": "category"
+}

@@ -2,7 +2,7 @@ module.exports = {
   title: 'WhyLabs Documentation',
   tagline: 'Open standard and platform for data logging',
   url: 'https://whylabs.ai',
-  baseUrl: '/',
+  baseUrl: '/documentation/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -81,12 +81,6 @@ module.exports = {
           // Please change this to your repo.
           editUrl:
             'https://github.com/facebook/docusaurus/edit/master/website/',
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
