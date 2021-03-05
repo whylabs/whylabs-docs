@@ -29,4 +29,4 @@ characteristics for the data. The data profiling technique used in _whylogs_ is 
 analysis acorss multiple batches of data. This allows teams to detect common issues such as data drift much more effetively.
 
 ## Next Steps
-* Check out our Spark notebook exmaple
+* Check out our Spark notebook example
