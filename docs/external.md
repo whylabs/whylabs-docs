@@ -12,12 +12,12 @@ Install the whylogs library. Or, try one of these template tutorials
 
 ### Python
 
-* Getting Started with whylogs Python
-* MLflow and Python
+*   Getting Started with whylogs Python
+*   MLflow and Python
 
 ### Java
-* Getting Started with whylogs Java
-* whylogs and Apache Spark
+*   Getting Started with whylogs Java
+*   whylogs and Apache Spark
 
 ## Learn about whylogs
 
