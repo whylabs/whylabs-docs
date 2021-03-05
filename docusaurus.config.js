@@ -5,29 +5,41 @@ module.exports = {
   baseUrl: '/docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: '/img/favicon.png',
   organizationName: 'whylabs', // Usually your GitHub org/user name.
   projectName: 'whylabs-docs', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'WhyLabs',
       logo: {
-        alt: 'WhyLabs Logo',
-        src: 'img/logo-256x256.png',
+        alt: 'WhyLabs logo',
+        src: '/img/WhyLabsLogo.svg',
+        href: 'https://whylabs.ai', 
+        target: '_self',
       },
       items: [
         {
           to: '/',
           activeBasePath: '/',
-          label: 'Docs',
-          position: 'right',
+          label: 'Documentation',
+          position: 'left',
         },
-        { href: 'https://whylabs.ai/blog', label: 'Blog', position: 'right' },
-        { href: 'https://whylabs.ai/support', label: 'Support', position: 'right' },
+        { 
+          href: 'https://whylabs.ai/blog', 
+          label: 'Blog', 
+          position: 'right',
+          target: '_self',
+        },
+        { 
+          href: 'https://whylabs.ai/support', 
+          label: 'Support', 
+          position: 'right',
+          target: '_self',
+        },
         {
           href: 'https://github.com/whylabs/whylogs',
-          label: 'GitHub',
+          class: 'navbar__item navbar__link header-github-link',
           position: 'right',
+          target: '_self',
         },
       ],
     },
@@ -48,7 +60,7 @@ module.exports = {
           items: [
             {
               label: 'Slack',
-              href: 'http://http://join.slack.whylabs.ai/',
+              href: 'http://join.slack.whylabs.ai/',
             },
             {
               label: 'Twitter',
@@ -60,7 +72,7 @@ module.exports = {
           title: 'More',
           items: [
             {
-              label: 'GitHub',
+              label: 'whylogs GitHub',
               href: 'https://github.com/whylabs/whylogs',
             },
           ],
