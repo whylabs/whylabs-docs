@@ -13,7 +13,7 @@ module.exports = {
       title: 'WhyLabs',
       logo: {
         alt: 'WhyLabs logo',
-        src: 'img/logo.svg',
+        src: 'img/logo-256x256.png',
       },
       items: [
         {
