@@ -20,9 +20,10 @@ module.exports = {
           to: '/',
           activeBasePath: '/',
           label: 'Docs',
-          position: 'left',
+          position: 'right',
         },
-        { href: 'https://whylabs.ai/blog', label: 'Blog', position: 'left' },
+        { href: 'https://whylabs.ai/blog', label: 'Blog', position: 'right' },
+        { href: 'https://whylabs.ai/support', label: 'Support', position: 'right' },
         {
           href: 'https://github.com/whylabs/whylogs',
           label: 'GitHub',

@@ -4,8 +4,14 @@ module.exports = {
     'intro',
     {
       Overview: ['concepts', 'profiling', 'open-spec', 'data-types'],
-      whylogs: ['mdx'],
-      "Use Cases": ['doc2', 'doc3'],
+      "Use Cases": [
+        'usecases-batch',
+        'usecases-distributed',
+        'usecases-streaming',
+        'usecases-dataquality',
+        'usecases-drift',
+      ],
+      "Data Logging": ['logger-overview', 'logger-python'],
       "WhyLabs Platform": ['whylabs-api', 'whylabs-architecture'],
     },
     {
