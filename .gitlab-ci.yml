@@ -1,0 +1,62 @@
+image: "node:12.18.0"
+
+# Test
+stages:
+  - prepare
+  - beta
+  - prod
+
+# This folder is cached between builds
+# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+cache:
+  paths:
+    - node_modules/
+    - build/
+    - .docusaurus/
+
+before_script:
+  - yarn install
+
+build:
+  stage: prepare
+  script:
+    - yarn build
+  artifacts:
+    paths:
+      - build/
+    expire_in: 1 week
+  only:
+    - mainline
+  resource_group: build-step
+
+deploy-beta:
+  stage: beta
+  script:
+    - yarn deploy:beta
+  environment:
+    name: beta
+    url: https://whylabs-website-deployment-beta.netlify.app
+  dependencies:
+    - build
+  only:
+    - mainline
+  resource_group: beta
+
+deploy-prod:
+  stage: prod
+  script:
+    - yarn deploy:prod
+  environment:
+    name: prod
+    url: https://whylabs.ai
+  when: manual
+  only:
+    - mainline
+  resource_group: prod
+
+deploy-preview:
+  stage: beta
+  script:
+    - yarn deploy:preview
+  only:
+    - merge_requests
