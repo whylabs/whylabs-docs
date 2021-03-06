@@ -1,6 +1,6 @@
 module.exports = {
   title: 'WhyLabs Documentation',
-  tagline: 'Open standard and platform for data logging',
+  tagline: 'Open standard for data logging and AI observability platform for MLOps',
   url: 'https://whylabs.ai',
   baseUrl: '/docs/',
   onBrokenLinks: 'throw',
@@ -9,6 +9,10 @@ module.exports = {
   organizationName: 'whylabs', // Usually your GitHub org/user name.
   projectName: 'whylabs-docs', // Usually your repo name.
   themeConfig: {
+    googleAnalytics: {
+      trackingID: 'UA-157043493-1', 
+      anonymizeIP: true, // Should IPs be anonymized?
+    },
     navbar: {
       logo: {
         alt: 'WhyLabs logo',

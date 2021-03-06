@@ -60,8 +60,12 @@ h1.hero__title {
 .navbar__items a {
   color: #fff;
 }
-.navbar__items a.navbar__link:hover {
+.navbar__items a.navbar__link:hover, a.footer__link-item:hover {
   color: var(--ifm-color-yellow);
+  text-decoration: none;
+}
+a.table-of-contents__link--active, a.menu__link.menu__link--active.active {
+  font-weight: 700;
 }
 .react-toggle {
   visibility: hidden;
