@@ -15,8 +15,8 @@
     "serve": "docusaurus serve",
     "clear": "docusaurus clear",
     "deploy:preview": "rm -fr build && yarn build && netlify deploy --dir build/",
-    "deploy:beta": "yarn clear && yarn build && netlify deploy --dir build/ --prod",
-    "deploy:prod": "yarn clear && yarn build && netlify deploy --dir build/ --prod"
+    "deploy:beta": "yarn build && netlify deploy --dir build/ --prod",
+    "deploy:prod": "yarn build && netlify deploy --dir build/ --prod"
   },
   "dependencies": {
     "@docusaurus/core": "2.0.0-alpha.70",

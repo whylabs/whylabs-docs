@@ -53,6 +53,10 @@ deploy-prod:
   only:
     - mainline
   resource_group: prod
+  artifacts:
+    paths:
+      - build
+    expire_in: 1 month
 
 deploy-preview:
   stage: beta
