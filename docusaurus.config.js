@@ -79,6 +79,11 @@ module.exports = {
               label: 'whylogs GitHub',
               href: 'https://github.com/whylabs/whylogs',
             },
+            {
+              label: 'Privacy policy',
+              href: 'https://whylabs.ai/privacy-policy',
+              target: "_self",
+            },
           ],
         },
       ],
