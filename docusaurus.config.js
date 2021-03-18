@@ -10,14 +10,19 @@ module.exports = {
   projectName: 'whylabs-docs', // Usually your repo name.
   themeConfig: {
     googleAnalytics: {
-      trackingID: 'UA-157043493-1', 
+      trackingID: 'UA-157043493-1',
       anonymizeIP: true, // Should IPs be anonymized?
+    },
+    prism: {
+      additionalLanguages: ['java', 'scala', 'kotlin'],
+      theme: require('prism-react-renderer/themes/github'),
+      darkTheme: require('prism-react-renderer/themes/dracula'),
     },
     navbar: {
       logo: {
         alt: 'WhyLabs logo',
         src: '/img/WhyLabsLogo.svg',
-        href: 'https://whylabs.ai', 
+        href: 'https://whylabs.ai',
         target: '_self',
       },
       items: [
@@ -27,15 +32,15 @@ module.exports = {
           label: 'Documentation',
           position: 'left',
         },
-        { 
-          href: 'https://whylabs.ai/blog', 
-          label: 'Blog', 
+        {
+          href: 'https://whylabs.ai/blog',
+          label: 'Blog',
           position: 'right',
           target: '_self',
         },
-        { 
-          href: 'https://whylabs.ai/support', 
-          label: 'Support', 
+        {
+          href: 'https://whylabs.ai/support',
+          label: 'Support',
           position: 'right',
           target: '_self',
         },
