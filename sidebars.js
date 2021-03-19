@@ -12,7 +12,10 @@ module.exports = {
         'usecases-drift',
       ],
       "Data Logging": ['logger-overview'],
-      "Integrations": ['integrations-rest-container'],
+      "Integrations": [
+        'integrations-rest-container',
+        'kafka-integration'
+      ],
       "WhyLabs Platform": ['whylabs-api', 'whylabs-architecture'],
     },
     {
