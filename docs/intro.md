@@ -5,25 +5,17 @@ sidebar_label: Introduction
 slug: /
 ---
 
-Profile and monitor your ML data pipeline end-to-end, and so much more.
+WhyLabs is an infrastructure-agnostic AI monitoring and operations solution for any data type at any scale. 
 
 ## Quick start
 
-Install the whylogs library. Or, try one of these template tutorials.
+Install the open source logging agent - whylogs: Start logging statistical properties of features, model inputs and model outsputs to enable explorative analysis, data unit testing and monitoring. 
 
-### Python
+Set up integrations with whylogs: Learn how to log and collect ML-specific metrics, traces and logs with simple integrations.
 
-* [Getting Started with whylogs Python](https://github.com/whylabs/whylogs-examples/blob/mainline/python/GettingStarted.ipynb)
-* [MLflow and whylogs Python](https://github.com/whylabs/whylogs-examples/blob/mainline/python/MLFlow%20Integration%20Example.ipynb)
-* [Streaming Logging with whylogs](https://github.com/whylabs/whylogs-examples/blob/mainline/python/Streaming%20Mode%20-%20whylogs.ipynb)
-* [Log data to S3](https://github.com/whylabs/whylogs-examples/blob/mainline/python/S3%20example.ipynb)
+Get started in the WhyLabs app: Discover how to use WhyLabs to to monitor model inputs, outputs, and performance. 
 
-### Java
-
-* Getting Started with whylogs Java
-* whylogs and Apache Spark
-
-## Learn more about whylogs
+## Learn more about whylogs - open source logging agent
 
 _whylogs_ provides lightweight data collection, enterprise scalability, and flexibility designed for data science
 workflows. It has built-in data tagging and aggregation capabilities. Furthermore, the installation to take minutes and
@@ -37,17 +29,19 @@ our [Slack channel](http://join.slack.whylabs.ai).
 Want to contribute? Please visit [our GitHub repo](https://github.com/whylabs/whylogs) to get started.
 
 
-## About WhyLabs Platform
+## Learn more about WhyLabs - AI observability platform
 
-WhyLabs is an infrastructure-agnostic AI monitoring and operations for any data type at any scale. Built on top of _
-whylogs_, we enable customers to:
+WhyLabs is an observability platform designed to monitor data pipelines and ML applications for data quality regressions, data drift and model performance degradation. Built on top of whylogs, the platform enables AI builders to:
 
-* Set up in minutes: provision the platform using whylogs, our lightweight open-source library. Integrate with Python,
-  Java, or Spark in a few lines of code.
+* Set up in minutes: provision the platform using whylogs, the lightweight open-source library. 
 
 * Integrate seamlessly: interoperable with any ML infrastructure and framework. Generate real-time insights in your
   existing data flow.
 
 * Scale to terabytes: handle your large-scale data, keeping compute requirements low. Integrate with either batch or
   streaming data pipelines.
+
+### Resources
+
+* [whylogs: Embrace Data Logging Across Your ML Systems](https://whylabs.ai/blog/posts/whylogs-embrace-data-logging)
   
