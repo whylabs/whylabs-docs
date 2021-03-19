@@ -11,7 +11,7 @@ module.exports = {
         'usecases-dataquality',
         'usecases-drift',
       ],
-      "Data Logging": ['logger-overview', 'logger-python'],
+      "Data Logging": ['logger-overview'],
       "Integrations": ['integrations-rest-container'],
       "WhyLabs Platform": ['whylabs-api', 'whylabs-architecture'],
     },

@@ -3,4 +3,4 @@ id: logger-overview
 title: Overview
 ---
 
-SDKs.
+Coming soon! This page will provide a detailed overview of our SDKs.
