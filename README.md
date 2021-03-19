@@ -4,6 +4,8 @@ This repository contains WhyLabs's documentation.
 
 This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
 
+Fully formatted documents can be viewed at http://docs.whylabs.ai/docs/.
+
 To contribute, please follow these steps:
 
 [[_TOC_]]
