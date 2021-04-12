@@ -40,6 +40,10 @@ WHYLABS_API_KEY=xxxxxx
 ## A precaution to make sure no one else can upload through your container.
 ## The key is expected as value for the header key X-API-Key.
 CONTAINER_API_KEY=secret-key
+
+# OPTIONAL additional set of strings considered to be null values.
+# Do not include spaces or quotes around the strings.
+NULL_STRINGS=nil,NaN,nan,null
 ```
 
 And you'll start it with.
