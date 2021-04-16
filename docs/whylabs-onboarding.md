@@ -5,13 +5,17 @@ title: Onboarding
 
 ## Get more out of whylogs
 
-While the open source whylogs library can be used by itself to profile data and detect drift, WhyLabs offers a comprehensive platform of data visualization tools, monitoring, notifications, and more. We designed the platform for enterprise scale, to simplify data monitoring for entire teams and organizations.
+If you have not yet checked out the whylogs library, we encourage you to do so! It's quick, it's easy, and it's free. whylogs is an open source library that uses data sketching algorithms to generate statistical profiles of data, without sampling and with _very_ little overhead. You can find an introduction to whylogs [here](/) and an overview of its concepts [here](/concepts).
+
+whylogs is also the star of the show when it comes to our data visualization and monitoring platform. Without it, we could not process data at truly massive scale, and your data's journey from your environment to the WhyLabs Platform always begins with whylogs.
+
+While whylogs can be used by itself to profile data and detect drift, WhyLabs offers a comprehensive platform of data visualization tools, monitoring, notifications, and more. We designed the platform for enterprise scale, to simplify data monitoring for entire teams and organizations.
 
 ### Getting started with the WhyLabs Platform
 
-If you have not yet checked out the whylogs library, we encourage you to do so! It's quick, it's easy, and it's free. whylogs is also the star of the show when it comes to our data visualization and monitoring platform. Without it, we could not process data at truly massive scale, and your data's journey from your environment to the WhyLabs Platform always begins with whylogs. You can find an overview of whylogs [here](/concepts).
+Once you are up and running with whylogs or want to skip right to the fun part, there is a quick way to check out the WhyLabs Platform without the need for any sign ups, credit cards, or age verification.
 
-If you are already familiar with whylogs, there is a quick way to check out the WhyLabs Platform without the need for any sign ups, credit cards, or age verification.
+You can get started by checking out the [Jupyter notebook](https://github.com/naddeoa/sessions-poc) or by following the steps below:
 
 1. Grab your favorite dataset with data that you feel comfortable sharing with us without going through the whole lawyer thing
 2. Begin a special logging session in whylogs and log some data from within it:
