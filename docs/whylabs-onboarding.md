@@ -18,7 +18,7 @@ Once you are up and running with whylogs or want to skip right to the fun part, 
 You can get started by checking out the [Jupyter notebook](https://github.com/naddeoa/sessions-poc) or by following the steps below:
 
 1. Grab your favorite dataset with data that you feel comfortable sharing with us without going through the whole lawyer thing
-2. Begin a special logging session in whylogs and log some data from within it:
+2. Begin a guest logging session in whylogs and log some data from within it:
 
 ```python
 import pandas as pd
@@ -43,7 +43,7 @@ This experience is designed to give you and your team an idea of what is possibl
 
 ### Signing up
 
-You've checked out our Platform, liked it, and want to unlock additional features and start monitoring data at scale. Or maybe you are feeling risky and want to slap whylogs directly into your production pipeline. We won't judge[^1]. Either way, signing up is a breeze:
+You've checked out our Platform, liked it, and want to unlock additional features and start monitoring data at scale. Or maybe you are feeling risky and want to drop whylogs directly into your production pipeline. We won't judge[^1]. Either way, signing up is a breeze:
 
 [^1]: We might.
 
