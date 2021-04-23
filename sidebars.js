@@ -3,7 +3,13 @@ module.exports = {
   docs: [
     'intro',
     {
-      Overview: ['concepts', 'profiling', 'open-spec', 'data-types'],
+      Overview: [
+        'concepts',
+        'profiling',
+        'open-spec',
+        'data-types',
+        'overview-data-pipelines',
+      ],
       "Use Cases": [
         'usecases-batch',
         'usecases-distributed',
