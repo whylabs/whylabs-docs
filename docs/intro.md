@@ -9,11 +9,38 @@ WhyLabs is an infrastructure-agnostic AI monitoring and operations solution for 
 
 ## Quick start
 
-Install the open source logging agent - whylogs: Start logging statistical properties of features, model inputs and model outsputs to enable explorative analysis, data unit testing and monitoring. 
+Install the open source logging library - _whylogs_: 
 
-Set up integrations with whylogs: Learn how to log and collect ML-specific metrics, traces and logs with simple integrations.
+```
+pip install whylogs
+```
 
-Get started in the WhyLabs app: Discover how to use WhyLabs to to monitor model inputs, outputs, and performance. 
+
+Start logging statistical properties of features, model inputs and model outsputs to enable explorative analysis, data unit testing and monitoring. 
+
+_whylogs_ is easy to get up and runnings
+
+```python
+from whylogs import get_or_create_session
+import pandas as pd
+
+session = get_or_create_session()
+
+df = pd.read_csv("path/to/file.csv")
+
+with session.logger(dataset_name="my_dataset") as logger:
+    
+    #dataframe
+    logger.log_dataframe(df)
+
+    #dict
+    logger.log({"name": 1})
+
+    #images
+    logger.log_images("path/to/image.png")
+```
+
+Get started in the WhyLabs app: [Discover](/onboarding)how to use WhyLabs to to monitor model inputs, outputs, and performance 
 
 ## Learn more about whylogs - open source logging agent
 
