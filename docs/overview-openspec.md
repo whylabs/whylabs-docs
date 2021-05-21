@@ -3,11 +3,10 @@ id: open-spec
 title: Open Specification
 ---
 
-## :hourglass: UH-OH!
+_whylogs_ is an open source standard for data and ML logging.
 
-It appears that the content you were looking for does not exist at this location.  
-In fact, nothing at all exists at this location... **yet**.
+whylogs is released under the Apache 2.0 open source license. It supports many languages and is easy to extend. This repo contains the whylogs CLI, language SDKs.
 
-This page is on its final descent and being prepared for landing. :airplane: 
+whylogs can be installed in any Python, Java or Spark environment; it can be deployed as a container and run as a sidecar; or invoked through various ML tools (see integrations). 
 
-**Please check back soon.**
+whylogs is designed by data scientists, ML engineers and distributed systems engineers to log data in the most cost-effective, scalable and accurate manner. No sampling. No post-processing. No manual configurations.
