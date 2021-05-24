@@ -22,6 +22,7 @@ module.exports = {
         'integrations-rest-container',
         'kafka-integration',
         'mlflow-integration',
+        'spark-integration',
       ],
       "WhyLabs Platform": ['whylabs-api', 'whylabs-architecture'],
     },
