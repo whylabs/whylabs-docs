@@ -20,13 +20,14 @@ module.exports = {
       "Data Logging": ['logger-overview'],
       "Integrations": [
         'integrations-rest-container',
-        'kafka-integration'
+        'kafka-integration',
+        'mlflow-integration',
       ],
       "WhyLabs Platform": ['whylabs-api', 'whylabs-architecture'],
     },
     {
       "whylogs API": apis.items[0].items,
     },
-    'external-resources'
+    'external-resources',
   ],
 };
