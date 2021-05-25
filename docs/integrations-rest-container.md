@@ -14,7 +14,7 @@ intended to be run on customer premises.
 
 <div style={{textAlign: 'center'}}>
 
-![REST Container Sequence Diagram](/img/rest-container-sequence.png)
+![REST Container Sequence Diagram](/img/uml/rest-container-sequence.png)
 
 </div>
 

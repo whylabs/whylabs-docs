@@ -5,12 +5,12 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "lint": "remark docs --frail",
-    "start": "docusaurus start",
-    "doc-build": "docusaurus build",
+    "start": "concurrently 'docusaurus start' './scripts/plantuml-server.sh'",
+    "doc-build": "./scripts/build-plantuml.sh && docusaurus build",
     "copy-docs": "mkdir _docs && mv build/* _docs/ && mv _docs build/ && mv build/_docs build/docs",
     "build-and-copy": "yarn doc-build && yarn copy-docs",
     "create-netlify-redirects": "echo \"/ /docs\" > build/_redirects",
-    "build": "yarn lint && yarn build-and-copy && yarn create-netlify-redirects",
+    "build": "./scripts/build-plantuml.sh && yarn lint && yarn build-and-copy && yarn create-netlify-redirects",
     "swizzle": "docusaurus swizzle",
     "serve": "docusaurus serve",
     "clear": "docusaurus clear",
@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^6.2.0",
     "netlify-cli": "^3.10.6",
     "remark-cli": "^9.0.0",
     "remark-lint": "^8.0.0",

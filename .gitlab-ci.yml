@@ -1,4 +1,4 @@
-image: "node:12.18.0"
+image: "timbru31/java-node:11-14"
 
 # Test
 stages:
