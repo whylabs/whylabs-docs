@@ -63,7 +63,11 @@ our [Slack channel](http://join.slack.whylabs.ai).
 
 ### Contribute to whylogs?
 
-Want to contribute? Please visit [our GitHub repo](https://github.com/whylabs/whylogs) to get started.
+Check out the whylogs [contribution process](https://github.com/whylabs/whylogs/blob/mainline/CONTRIBUTING.md) and [Code of Conduct](https://github.com/whylabs/whylogs/blob/mainline/CODE_OF_CONDUCT.md) to get started.  
+
+Choose between the [whylogs Python GitHub repo](https://github.com/whylabs/whylogs) or the [whylogs Java GitHub repo](https://github.com/whylabs/whylogs-java) for your contributions. 
+
+Brainstorm ideas and share feedback with the whylogs community members on [Slack](http://join.slack.whylabs.ai/)!
 
 ### Resources
 
