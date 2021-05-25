@@ -1,0 +1,12 @@
+@startuml
+!include plantuml.skin
+
+actor User
+boundary RestContainer
+
+User -> RestContainer: send data
+RestContainer -> RestContainer: run whylogs on data
+RestContainer -> RestContainer: store locally
+RestContainer -> WhyLabs: periodically upload
+
+@enduml

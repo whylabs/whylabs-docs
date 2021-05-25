@@ -21,6 +21,7 @@ To contribute, please follow these steps:
   You can use [nvm](https://github.com/nvm-sh/nvm) for managing multiple Node versions on a single machine installed
 - [Yarn](https://yarnpkg.com/en/) version >= 1.5 (which can be checked by running `yarn --version`). Yarn is a
   performant package manager for JavaScript and replaces the `npm` client.
+- fswatch via `brew install fswatch`.
 
 ### Clone and branching
 
@@ -161,3 +162,20 @@ workflow above. Make sure you add **/docs** to the URL
   
 * The preview site should give you a rendering with your changes like [this link](https://6042a48f6b86ed00870bca09--whylabs-docs-dev.netlify.app/):
   ![Preview](dev/web-step10.png)
+
+# Diagrams
+We use plantuml to create diagrams. It's a diagram DSL that lets you version control your diagrams and generate them consistently across different authors. We bundle a version of the plantuml jar along with the repo. You'll need to install `fswatch` with `brew install fswatch` in order to get the server working in `yarn start`.
+
+The easiest way to make a new diagram is to fork one of the existing ones and check out the plantuml documentation online. They have pages on each type of diagram that you can make. You'll probably mostly be creating [sequence](https://plantuml.com/sequence-diagram) and [class](https://plantuml.com/class-diagram) diagrams, but they do have more.
+
+To include your diagrams, you'll reference them as images in the location that they're hardcoded to be generated into, like this:
+
+```markdown
+<div style={{textAlign: 'center'}}>
+
+![REST Container Sequence Diagram](/img/uml/rest-container-sequence.png)
+
+</div>
+```
+
+The empty space in between the div and the markdown include is apparently important.

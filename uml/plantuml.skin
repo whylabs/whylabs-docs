@@ -1,0 +1,65 @@
+skinparam {
+    shadowing false
+
+    backgroundColor #FFFFFF
+
+    ArrowColor #369BAC
+    ' These are the lines inbetween the entities top/bottom'
+    SequenceLifeLineBackgroundColor #369BAC
+    SequenceLifeLineBorderColor #369BAC
+    SequenceBoxFontColor #369BAC
+
+    ParticipantFontColor #021826
+    ActorFontColor #021826
+
+    ' LifeLineBorderColor black
+    ' LifeLineBackgroundColor black
+    ' LifeLineArrowColor black
+    ' LifeLineColor black
+    ' LifeLineBorderThickness 10
+    ' ReferenceBackgroundColor #369BAC
+    ' ReferenceBorderColor #369BAC
+    ' ReferenceFontColor #369BAC
+    ' ReferenceHeaderBackgroundColor #369BAC
+    ' BoxBackgroundColor #369BAC
+    ' BoxBorderColor #369BAC
+    ' NewpageSeparatorColor #369BAC
+    ' DividerBackgroundColor #369BAC
+    ' DividerBorderColor #369BAC
+    ' DividerFontColor #369BAC
+    ' GroupBackgroundColor #369BAC
+
+    stateBackgroundColor #EEEEEE
+    stateBorderColor #021826
+
+    boundaryBackgroundColor #EEEEEE
+    boundaryBorderColor #021826
+    boundaryFontColor #021826
+
+
+    activityBackgroundColor #EEEEEE
+    activityBorderColor #021826
+
+    databaseBackgroundColor #EEEEEE
+    databaseBorderColor #021826
+
+    objectBackgroundColor #EEEEEE
+    objectBorderColor #021826
+
+    componentBackgroundColor #EEEEEE
+    componentBorderColor #021826
+
+    classBackgroundColor #EEEEEE
+    classBorderColor #021826
+
+    noteBackgroundColor #F8F8F8
+    noteBorderColor #FCE3D0
+
+    sequenceParticipantBackgroundColor #EEEEEE
+    sequenceParticipantBorderColor #021826
+    sequenceActorBackgroundColor #EEEEEE
+    sequenceActorBorderColor #021826
+    sequenceBoundaryBackgroundColor #EEEEEE
+    sequenceBoundaryBorderColor #021826
+    noteFontSize 10
+}
