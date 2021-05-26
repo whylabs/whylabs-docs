@@ -1,6 +1,6 @@
 ---
 id: profiling
-title: Data Profiling
+title: Data Logging and Profiling
 ---
 
 ## Observing and logging data with data profiles
