@@ -54,14 +54,14 @@ With whylogs integrated into your workflow, the next step is to onboard with the
 
 ## Learn more about whylogs - open source logging agent
 
-whylogs provides lightweight data collection, enterprise scalability, and flexibility designed for data science
-workflows. It has built-in data tagging and aggregation capabilities. Furthermore, the installation to take minutes and
-seamlessly integrate with existing tools. You can read [an in-depth overview about whylogs](/concepts).
+- whylogs provides lightweight data collection, enterprise scalability, and flexibility designed for data science
+- workflows. It has built-in data tagging and aggregation capabilities. Furthermore, the installation to take minutes and
+- seamlessly integrate with existing tools. You can read [an in-depth overview about whylogs](/concepts).
 
 Wondering if the whylogs is a good fit for your use case? Check out our [use cases section](/usecases-batch) or join
 our [Slack channel](http://join.slack.whylabs.ai).
 
-### Contribute to whylogs?
+## Contribute to whylogs?
 
 Check out the whylogs [contribution process](https://github.com/whylabs/whylogs/blob/mainline/CONTRIBUTING.md) and [Code of Conduct](https://github.com/whylabs/whylogs/blob/mainline/CODE_OF_CONDUCT.md) to get started.  
 
@@ -69,7 +69,7 @@ Choose between the [whylogs Python GitHub repo](https://github.com/whylabs/whylo
 
 Brainstorm ideas and share feedback with the whylogs community members on [Slack](http://join.slack.whylabs.ai/)!
 
-### Resources
+## Resources
 
 * [whylogs: Embrace Data Logging Across Your ML Systems](https://whylabs.ai/blog/posts/whylogs-embrace-data-logging)
   

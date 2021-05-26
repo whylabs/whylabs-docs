@@ -20,6 +20,7 @@ One particular awesome feature of the approximate methods used in whylogs, is th
 On top of that these statistics are mergeable, which means you can collect them in a fully distributed manner. And while your training data may be huge, the data we log using these methods have a constant footprint.
 
 We will use a dataset from Kaggle (https://www.kaggle.com/yugagrawal95/sample-media-spends-data). It contains advertising and media impressions and views per week for a number of marketing campaigns for some unknown company. 
+
 ```python
 data = pd.read_csv("MediaSpendDataset.csv",
                    parse_dates=["Calendar_Week"], infer_datetime_format=True)
@@ -60,7 +61,7 @@ Plotting the distribution for the "Overall views" features, shows a clear shift 
 
 ![distribution shift](/img/overall_views_stats.png)
 
-We can qunatify this shift, by using metrics like the Population Stability Index (PSI), Kolmogorov-Smirnov statistic, Kullback-Lebler divergence (or other f-divergences), and histogram intersection. For example, given its popularity, we can compute the KL-divergence as a potential metric. 
+We can qunatify this shift, by using metrics like the Population Stability Index (PSI), Kolmogorov-Smirnov statistic (KS-test), Kullback-Lebler (KL) divergence (or other f-divergences), and histogram intersection. For example, given its popularity, we can compute the KL-divergence as a potential metric. 
 
 
 ## Next Steps
