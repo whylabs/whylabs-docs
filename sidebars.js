@@ -17,7 +17,7 @@ module.exports = {
         'usecases-dataquality',
         'usecases-drift',
       ],
-      "Data Logging": ['logger-overview'],
+      // "Data Logging": ['logger-overview'],
       "Integrations": [
         'integrations-rest-container',
         'kafka-integration',

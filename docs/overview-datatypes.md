@@ -2,10 +2,7 @@
 id: data-types
 title: Data Types Support
 ---
-
-## Data Types<a name="data-types" />
-
-_whylogs_ supports both structured and unstructured data, specifically: 
+[whylogs](https://github.com/whylabs/whylogs) supports both structured and unstructured data, specifically: 
 
 | Data type  | Features | Notebook Example |
 | --- | --- | ---|

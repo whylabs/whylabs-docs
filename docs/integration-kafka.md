@@ -5,7 +5,7 @@ title: Kafka
 
 #### Kafka event processing
 
-Whylogs can be seamlessly integrated into your event-driven Kafka architecture.  Shown below is the
+_whylogs_ can be seamlessly integrated into your event-driven Kafka architecture.  Shown below is the
 heart of a simple shim layer written in Kotlin that consumes events from a Kafka
 topic and processes them through whylogs.  Each Kafka event represents a row of named features in an endless
 stream of training data.
