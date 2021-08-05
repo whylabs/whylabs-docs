@@ -1,3 +1,20 @@
+# Table of Contents
+
+* [whylogs.app.writers](#whylogs.app.writers)
+  * [Writer](#whylogs.app.writers.Writer)
+    * [write](#whylogs.app.writers.Writer.write)
+    * [path\_suffix](#whylogs.app.writers.Writer.path_suffix)
+    * [file\_name](#whylogs.app.writers.Writer.file_name)
+    * [template\_params](#whylogs.app.writers.Writer.template_params)
+  * [LocalWriter](#whylogs.app.writers.LocalWriter)
+    * [write](#whylogs.app.writers.LocalWriter.write)
+    * [ensure\_path](#whylogs.app.writers.LocalWriter.ensure_path)
+  * [S3Writer](#whylogs.app.writers.S3Writer)
+    * [write](#whylogs.app.writers.S3Writer.write)
+  * [WhyLabsWriter](#whylogs.app.writers.WhyLabsWriter)
+    * [write](#whylogs.app.writers.WhyLabsWriter.write)
+  * [writer\_from\_config](#whylogs.app.writers.writer_from_config)
+
 ---
 sidebar_label: writers
 title: whylogs.app.writers
@@ -16,21 +33,21 @@ Class for writing to disk
 Parameters
 ----------
 output_path : str
-    Prefix of where to output files.  A directory for `type = &#x27;local&#x27;`,
-    or key prefix for `type = &#x27;s3&#x27;`
+Prefix of where to output files.  A directory for `type = &#x27;local&#x27;`,
+or key prefix for `type = &#x27;s3&#x27;`
 formats : list
-    All output formats.
-    See :data:`whylogs.app.config.ALL_SUPPORTED_FORMATS`
+All output formats.
+See :data:`whylogs.app.config.ALL_SUPPORTED_FORMATS`
 path_template : str, optional
-    Templatized path output using standard python string templates.
-    Variables are accessed via $identifier or ${identifier}.
-    See :func:`Writer.template_params` for a list of available identifers.
-    Default = :data:`DEFAULT_PATH_TEMPLATE`
+Templatized path output using standard python string templates.
+Variables are accessed via $identifier or ${identifier}.
+See :func:`Writer.template_params` for a list of available identifers.
+Default = :data:`DEFAULT_PATH_TEMPLATE`
 filename_template : str, optional
-    Templatized output filename using standardized python string templates.
-    Variables are accessed via $identifier or ${identifier}.
-    See :func:`Writer.template_params` for a list of available identifers.
-    Default = :data:`DEFAULT_FILENAME_TEMPLATE`
+Templatized output filename using standardized python string templates.
+Variables are accessed via $identifier or ${identifier}.
+See :func:`Writer.template_params` for a list of available identifers.
+Default = :data:`DEFAULT_FILENAME_TEMPLATE`
 
 #### write
 
@@ -54,7 +71,7 @@ applying the path templating defined in `self.path_template`
 #### file\_name
 
 ```python
- | file_name(profile: DatasetProfile, file_extension: str)
+ | file_name(profile: DatasetProfile, file_extension: str, rotation_suffix: Optional[str] = None)
 ```
 
 For a given DatasetProfile, generate an output filename based on the
@@ -73,12 +90,12 @@ generating templatized variables or paths.
 Parameters
 ----------
 profile : DatasetProfile
-    The dataset profile
+The dataset profile
 
 Returns
 -------
 params : dict
-    Variables which can be substituted into a template string.
+Variables which can be substituted into a template string.
 
 
 Notes
@@ -103,7 +120,7 @@ See :class:`Writer` for a description of arguments
 #### write
 
 ```python
- | write(profile: DatasetProfile, rotation_suffix: str = None)
+ | write(profile: DatasetProfile, rotation_suffix: Optional[str] = None)
 ```
 
 Write a dataset profile to disk
@@ -134,6 +151,20 @@ See :class:`Writer` for a description of arguments
 
 Write a dataset profile to S3
 
+## WhyLabsWriter Objects
+
+```python
+class WhyLabsWriter(Writer)
+```
+
+#### write
+
+```python
+ | write(profile: DatasetProfile, rotation_suffix: str = None)
+```
+
+Write a dataset profile to WhyLabs
+
 #### writer\_from\_config
 
 ```python
@@ -145,5 +176,5 @@ Construct a whylogs `Writer` from a `WriterConfig`
 Returns
 -------
 writer : Writer
-    whylogs writer
+whylogs writer
 

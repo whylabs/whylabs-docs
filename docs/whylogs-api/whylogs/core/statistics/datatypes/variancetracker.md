@@ -1,3 +1,15 @@
+# Table of Contents
+
+* [whylogs.core.statistics.datatypes.variancetracker](#whylogs.core.statistics.datatypes.variancetracker)
+  * [VarianceTracker](#whylogs.core.statistics.datatypes.variancetracker.VarianceTracker)
+    * [update](#whylogs.core.statistics.datatypes.variancetracker.VarianceTracker.update)
+    * [stddev](#whylogs.core.statistics.datatypes.variancetracker.VarianceTracker.stddev)
+    * [variance](#whylogs.core.statistics.datatypes.variancetracker.VarianceTracker.variance)
+    * [merge](#whylogs.core.statistics.datatypes.variancetracker.VarianceTracker.merge)
+    * [copy](#whylogs.core.statistics.datatypes.variancetracker.VarianceTracker.copy)
+    * [to\_protobuf](#whylogs.core.statistics.datatypes.variancetracker.VarianceTracker.to_protobuf)
+    * [from\_protobuf](#whylogs.core.statistics.datatypes.variancetracker.VarianceTracker.from_protobuf)
+
 ---
 sidebar_label: variancetracker
 title: whylogs.core.statistics.datatypes.variancetracker
@@ -15,11 +27,11 @@ batched data.
 Parameters
 ----------
 count
-    Number tracked elements
+Number tracked elements
 sum
-    Sum of all numbers
+Sum of all numbers
 mean
-    Current estimate of the mean
+Current estimate of the mean
 
 #### update
 
@@ -66,12 +78,12 @@ https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Parallel_algor
 Parameters
 ----------
 other : VarianceTracker
-    Other variance tracker
+Other variance tracker
 
 Returns
 -------
 merged : VarianceTracker
-    A new variance tracker from the merged statistics
+A new variance tracker from the merged statistics
 
 #### copy
 

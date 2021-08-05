@@ -1,3 +1,12 @@
+# Table of Contents
+
+* [whylogs.io.file\_loader](#whylogs.io.file_loader)
+  * [valid\_file](#whylogs.io.file_loader.valid_file)
+  * [extension\_file](#whylogs.io.file_loader.extension_file)
+  * [image\_loader](#whylogs.io.file_loader.image_loader)
+  * [json\_loader](#whylogs.io.file_loader.json_loader)
+  * [file\_loader](#whylogs.io.file_loader.file_loader)
+
 ---
 sidebar_label: file_loader
 title: whylogs.io.file_loader
@@ -14,11 +23,11 @@ simple check if extension is part of the implemented ones
 **Arguments**:
 
 - `fname` _str_ - file path
-  
+
 
 **Returns**:
 
-  bool
+bool
 
 #### extension\_file
 
@@ -34,15 +43,15 @@ extendind to a lib like libmagic
 **Arguments**:
 
 - `path` _str_ - File path
-  
+
 
 **Returns**:
 
 - `file_extension_given` - str: extension of encoding data
-  magic_data : dic : any magic data information available including
-  magic number : byte
+magic_data : dic : any magic data information available including
+magic number : byte
 - `mime_type` - str
-  name : str
+name : str
 
 #### image\_loader
 
@@ -55,11 +64,11 @@ tries to load  image using the PIL lib
 **Arguments**:
 
 - `path` _str_ - path to image files
-  
+
 
 **Returns**:
 
-  PIL.Image.Image : image data and image encoding format
+PIL.Image.Image : image data and image encoding format
 
 #### json\_loader
 
@@ -72,12 +81,12 @@ Loads json or jsonl data
 **Arguments**:
 
 - `path` _str, optional_ - path to file
-  
+
 
 **Returns**:
 
-  objs : Union[Dict, list]: Returns a list or dict of json data
-  json_format : format of file (json or jsonl)
+objs : Union[Dict, list]: Returns a list or dict of json data
+json_format : format of file (json or jsonl)
 
 #### file\_loader
 
@@ -91,13 +100,13 @@ Factory for file data
 
 - `path` _str_ - path to file
 - `valid_file` _Callable[[str], bool], optional_ - Optional valid file check,
-  
+
 
 **Returns**:
 
-  data : Tuple( [] Dataframe or Image data (PIL format), or Dict],
+data : Tuple( [] Dataframe or Image data (PIL format), or Dict],
 - `magic_data` - Dict of magic number data)
-  
+
 
 **Raises**:
 

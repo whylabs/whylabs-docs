@@ -1,3 +1,10 @@
+# Table of Contents
+
+* [whylogs.util.varint](#whylogs.util.varint)
+  * [encode](#whylogs.util.varint.encode)
+  * [decode\_stream](#whylogs.util.varint.decode_stream)
+  * [decode\_bytes](#whylogs.util.varint.decode_bytes)
+
 ---
 sidebar_label: varint
 title: whylogs.util.varint

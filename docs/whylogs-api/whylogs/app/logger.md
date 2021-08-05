@@ -1,3 +1,20 @@
+# Table of Contents
+
+* [whylogs.app.logger](#whylogs.app.logger)
+  * [Logger](#whylogs.app.logger.Logger)
+    * [profile](#whylogs.app.logger.Logger.profile)
+    * [segmented\_profiles](#whylogs.app.logger.Logger.segmented_profiles)
+    * [flush](#whylogs.app.logger.Logger.flush)
+    * [full\_profile\_check](#whylogs.app.logger.Logger.full_profile_check)
+    * [close](#whylogs.app.logger.Logger.close)
+    * [log](#whylogs.app.logger.Logger.log)
+    * [log\_image](#whylogs.app.logger.Logger.log_image)
+    * [log\_local\_dataset](#whylogs.app.logger.Logger.log_local_dataset)
+    * [log\_annotation](#whylogs.app.logger.Logger.log_annotation)
+    * [log\_csv](#whylogs.app.logger.Logger.log_csv)
+    * [log\_dataframe](#whylogs.app.logger.Logger.log_dataframe)
+    * [is\_active](#whylogs.app.logger.Logger.is_active)
+
 ---
 sidebar_label: logger
 title: whylogs.app.logger
@@ -15,22 +32,27 @@ Class for logging whylogs statistics.
 
 **Arguments**:
 
+consisting of digits with unit specification, e.g. 30s, 2h, d.\
+units are seconds (&quot;s&quot;), minutes (&quot;m&quot;), hours, (&quot;h&quot;), or days (&quot;d&quot;) \
+Output filenames will have a suffix reflecting the rotation interval.
+Can be either:
+- Autosegmentation source, one of [&quot;auto&quot;, &quot;local&quot;]
+- List of tag key value pairs for tracking data segments
+- List of tag keys for which we will track every value
+- None, no segments will be used
 - `session_id`: The session ID value. Should be set by the Session boject
 - `dataset_name`: The name of the dataset. Gets included in the DatasetProfile metadata and can be used in generated filenames.
 - `dataset_timestamp`: Optional. The timestamp that the logger represents
 - `session_timestamp`: Optional. The time the session was created
 - `tags`: Optional. Dictionary of key, value for aggregating data upstream
 - `metadata`: Optional. Dictionary of key, value. Useful for debugging (associated with every single dataset profile)
-- `writers`: List of Writer objects used to write out the data
-:param with_rotation_time. Whether to rotate with time, takes values of overall rotation interval,
-&quot;s&quot; for seconds
-&quot;m&quot; for minutes
-&quot;h&quot; for hours
-&quot;d&quot; for days
-:param interval. Additinal time rotation multipler.
-- `verbose`: enable debug logging or not
-- `cache_size`: set how many dataprofiles to cache
-- `segments`: define either a list of egment keys or a list of segments tags: [  {&quot;key&quot;:&lt;featurename&gt;,&quot;value&quot;: &lt;featurevalue&gt;},... ]
+- `writers`: Optional. List of Writer objects used to write out the data
+- `metadata_writer`: Optional. MetadataWriter object used to write non-profile information
+- `with_rotation_time`: Optional. Log rotation interval, \
+- `interval`: Deprecated: Interval multiplier for `with_rotation_time`, defaults to 1.
+- `verbose`: enable debug logging
+- `cache_size`: dataprofiles to cache
+- `segments`:
 - `profile_full_dataset`: when segmenting dataset, an option to keep the full unsegmented profile of the dataset.
 - `constraints`: static assertions to be applied to streams and summaries.
 
@@ -43,8 +65,7 @@ Class for logging whylogs statistics.
 
 **Returns**:
 
-the last backing dataset profile
-:rtype: DatasetProfile
+`DatasetProfile`: the last backing dataset profile
 
 #### segmented\_profiles
 
@@ -55,8 +76,7 @@ the last backing dataset profile
 
 **Returns**:
 
-the last backing dataset profile
-:rtype: Dict[str, DatasetProfile]
+`Dict[str, DatasetProfile]`: the last backing dataset profile
 
 #### flush
 
@@ -89,7 +109,7 @@ the result dataset profile. None if the logger is closed
 #### log
 
 ```python
- | log(features: Optional[Dict[str, any]] = None, feature_name: str = None, value: any = None)
+ | log(features: Optional[Dict[str, any]] = None, feature_name: str = None, value: any = None, character_list: str = None, token_method: Optional[Callable] = None)
 ```
 
 Logs a collection of features or a single feature (must specify one or the other).
@@ -97,7 +117,6 @@ Logs a collection of features or a single feature (must specify one or the other
 **Arguments**:
 
 - `features`: a map of key value feature for model input
-- `feature_name`: a dictionary of key-&gt;value for multiple features. Each entry represent a single columnar feature
 - `feature_name`: name of a single feature. Cannot be specified if &#x27;features&#x27; is specified
 - `value`: value of as single feature. Cannot be specified if &#x27;features&#x27; is specified
 
@@ -114,7 +133,7 @@ API to track an image, either in PIL format or as an input path
 - `feature_name`: name of the feature
 - `metadata_attributes`: metadata attributes to extract for the images
 - `feature_transforms`: a list of callables to transform the input into metrics
-:type image: Union[str, PIL.image]
+- `image` (`Union[str, PIL.image]`):
 
 #### log\_local\_dataset
 
@@ -129,14 +148,10 @@ folders, this will pick up folder names as a segmented feature
 
 **Arguments**:
 
+- `show_progress` - showing the progress bar
+- `image_feature_transforms` - image transform that you would like to use with the image log
 - `root_dir` _str_ - directory where dataset is located.
 - `folder_feature_name` _str, optional_ - Name for the subfolder features, i.e. class, store etc.
-- `v` _None, optional_ - image transform that you would like to use with the image log
-  
-
-**Raises**:
-
-- `NotImplementedError` - Description
 
 #### log\_annotation
 
@@ -150,11 +165,6 @@ Log structured annotation data ie. JSON like structures
 **Arguments**:
 
 - `annotation_data` _Dict or List_ - Description
-  
-
-**Returns**:
-
-- `TYPE` - Description
 
 #### log\_csv
 
@@ -166,12 +176,10 @@ Log a CSV file. This supports the same parameters as :func`pandas.red_csv&lt;pan
 
 **Arguments**:
 
-- `filepath_or_buffer`: the path to the CSV or a CSV buffer
-:type filepath_or_buffer: FilePathOrBuffer
-- `kwargs`: from pandas:read_csv
-- `segments`: define either a list of segment keys or a list of segments tags: `[  {&quot;key&quot;:&lt;featurename&gt;,&quot;value&quot;: &lt;featurevalue&gt;},... ]`
-- `profile_full_dataset`: when segmenting dataset, an option to keep the full unsegmented profile of the
-dataset.
+- `filepath_or_buffer` - the path to the CSV or a CSV buffer
+- `segments` - define either a list of segment keys or a list of segments tags: `[  {&quot;key&quot;:&lt;featurename&gt;,&quot;value&quot;: &lt;featurevalue&gt;},... ]`
+- `profile_full_dataset` - when segmenting dataset, an option to keep the full unsegmented profile of the dataset
+- `**kwargs` - from pandas:read_csv
 
 #### log\_dataframe
 
@@ -183,8 +191,8 @@ Generate and log a whylogs DatasetProfile from a pandas dataframe
 
 **Arguments**:
 
-- `profile_full_dataset`: when segmenting dataset, an option to keep the full unsegmented profile of the
 dataset.
+- `profile_full_dataset`: when segmenting dataset, an option to keep the full unsegmented profile of the
 - `segments`: specify the tag key value pairs for segments
 - `df`: the Pandas dataframe to log
 

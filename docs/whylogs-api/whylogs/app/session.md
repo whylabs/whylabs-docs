@@ -1,3 +1,20 @@
+# Table of Contents
+
+* [whylogs.app.session](#whylogs.app.session)
+  * [Session](#whylogs.app.session.Session)
+    * [logger](#whylogs.app.session.Session.logger)
+    * [log\_dataframe](#whylogs.app.session.Session.log_dataframe)
+    * [profile\_dataframe](#whylogs.app.session.Session.profile_dataframe)
+    * [new\_profile](#whylogs.app.session.Session.new_profile)
+    * [estimate\_segments](#whylogs.app.session.Session.estimate_segments)
+    * [close](#whylogs.app.session.Session.close)
+    * [remove\_logger](#whylogs.app.session.Session.remove_logger)
+  * [session\_from\_config](#whylogs.app.session.session_from_config)
+  * [reset\_default\_session](#whylogs.app.session.reset_default_session)
+  * [get\_or\_create\_session](#whylogs.app.session.get_or_create_session)
+  * [get\_session](#whylogs.app.session.get_session)
+  * [get\_logger](#whylogs.app.session.get_logger)
+
 ---
 sidebar_label: session
 title: whylogs.app.session
@@ -14,71 +31,60 @@ class Session()
 Parameters
 ----------
 project : str
-    The project name. We will default to the project name when logging
-    a dataset if the dataset name is not specified
+The project name. We will default to the project name when logging
+a dataset if the dataset name is not specified
 pipeline : str
-    Name of the pipeline associated with this session
+Name of the pipeline associated with this session
 writers : list
-    configuration for the output writers. This is where the log data
-    will go
+configuration for the output writers. This is where the log data
+will go
 verbose : bool
-    enable verbose logging for not. Default is ``False``
+enable verbose logging for not. Default is ``False``
 
 #### logger
 
 ```python
- | logger(dataset_name: Optional[str] = None, dataset_timestamp: Optional[datetime.datetime] = None, session_timestamp: Optional[datetime.datetime] = None, tags: Dict[str, str] = None, metadata: Dict[str, str] = None, segments: Optional[Union[List[Dict], List[str]]] = None, profile_full_dataset: bool = False, with_rotation_time: str = None, cache_size: int = 1, constraints: DatasetConstraints = None) -> Logger
+ | logger(dataset_name: Optional[str] = None, dataset_timestamp: Optional[datetime.datetime] = None, session_timestamp: Optional[datetime.datetime] = None, tags: Dict[str, str] = None, metadata: Dict[str, str] = None, segments: Optional[Union[List[Dict], List[str], str]] = None, profile_full_dataset: bool = False, with_rotation_time: str = None, cache_size: int = 1, constraints: DatasetConstraints = None) -> Logger
 ```
 
 Create a new logger or return an existing one for a given dataset name.
 If no dataset_name is specified, we default to project name
 
-Parameters
-----------
-metadata
-dataset_name : str
-    Name of the dataset. Default is the project name
-dataset_timestamp: datetime.datetime, optional
-    The timestamp associated with the dataset. Could be the timestamp
-    for the batch, or the timestamp
-    for the window that you are tracking
-tags: dict
-    Tag the data with groupable information. For example, you might want to tag your data
-    with the stage information (development, testing, production etc...)
-metadata: dict
-    Useful to debug the data source. You can associate non-groupable information in this field
-    such as hostname,
-session_timestamp: datetime.datetime, optional
-    Override the timestamp associated with the session. Normally you
-    shouldn&#x27;t need to override this value
-segments:
-    Can be either:
-    - List of tag key value pairs for tracking datasetments
-    - List of tag keys for whylogs to split up the data in the backend
-Returns
--------
-ylog : whylogs.app.logger.Logger
-    whylogs logger
+**Arguments**:
+
+- `dataset_name` - name of the dataset
+- `dataset_timestamp` - timestamp of the dataset. Default to now
+- `session_timestamp` - timestamp of the session. Inherits from the session
+- `tags` - metadata associated with the profile
+- `metadata` - same as tags. Will be deprecated
+- `segments` - slice of data that the profile belongs to
+- `profile_full_dataset` - when segmenting dataset, an option to keep the full unsegmented profile of the dataset
+- `with_rotation_time` - rotation time in minutes our hours (&quot;1m&quot;, &quot;1h&quot;)
+- `cache_size` - size of the segment cache
+- `constraints` - whylogs contrainst to monitor against
 
 #### log\_dataframe
 
 ```python
- | log_dataframe(df: pd.DataFrame, dataset_name: Optional[str] = None, dataset_timestamp: Optional[datetime.datetime] = None, session_timestamp: Optional[datetime.datetime] = None, tags: Dict[str, str] = None, metadata: Dict[str, str] = None, segments: Optional[Union[List[Dict], List[str]]] = None, profile_full_dataset: bool = False, constraints: DatasetConstraints = None) -> Optional[DatasetProfile]
+ | log_dataframe(df: pd.DataFrame, dataset_name: Optional[str] = None, dataset_timestamp: Optional[datetime.datetime] = None, session_timestamp: Optional[datetime.datetime] = None, tags: Dict[str, str] = None, metadata: Dict[str, str] = None, segments: Optional[Union[List[Dict], List[str], str]] = None, profile_full_dataset: bool = False, constraints: DatasetConstraints = None) -> Optional[DatasetProfile]
 ```
 
 Perform statistics caluclations and log a pandas dataframe
 
 **Arguments**:
 
+Can be either:
+- Autosegmentation source, one of [&quot;auto&quot;, &quot;local&quot;]
+- List of tag key value pairs for tracking data segments
+- List of tag keys for which we will track every value
+- None, no segments will be used
 - `df`: the dataframe to profile
 - `dataset_name`: name of the dataset
 - `dataset_timestamp`: the timestamp for the dataset
 - `session_timestamp`: the timestamp for the session. Override the default one
 - `tags`: the tags for the profile. Useful when merging
 - `metadata`: information about this current profile. Can be discarded when merging
-- `segments`: can be either
-- a list of tag key value pairs for marking the segment of the data
-- a list of tag keys to group the data by
+- `segments`:
 - `profile_full_dataset`: when segmenting dataset, an option to keep the full unsegmented profile of the dataset
 
 **Returns**:
@@ -127,6 +133,29 @@ Create an empty dataset profile with the metadata from the session.
 
 a dataset profile if the session is active
 
+#### estimate\_segments
+
+```python
+ | estimate_segments(df: pd.DataFrame, name: str, target_field: str = None, max_segments: int = 30, dry_run: bool = False) -> Optional[Union[List[Dict], List[str]]]
+```
+
+Estimates the most important features and values on which to segment
+data profiling using entropy-based methods.
+
+**Arguments**:
+
+to loggers with same dataset_name
+default 30
+- `df`: the dataframe of data to profile
+- `name`: name for discovery in the logger, automatically applied
+- `target_field`: target field (optional)
+- `max_segments`: upper threshold for total combinations of segments,
+- `dry_run`: run calculation but do not write results to metadata
+
+**Returns**:
+
+a list of segmentation feature names
+
 #### close
 
 ```python
@@ -169,7 +198,7 @@ Reset and deactivate the global whylogs logging session.
 #### get\_or\_create\_session
 
 ```python
-get_or_create_session(path_to_config: Optional[str] = None)
+get_or_create_session(path_to_config: Optional[str] = None, report_progress: Optional[bool] = False)
 ```
 
 Retrieve the current active global session.
@@ -182,9 +211,11 @@ config.
 
 **Returns**:
 
-The global active session
-:rtype: Session
-:type path_to_config: str
+`Session`: The global active session
+
+**Arguments**:
+
+- `path_to_config` (`str`):
 
 #### get\_session
 
@@ -197,7 +228,7 @@ Retrieve the logging session without altering or activating it.
 Returns
 -------
 session : Session
-    The global session
+The global session
 
 #### get\_logger
 
@@ -210,5 +241,5 @@ Retrieve the global session logger
 Returns
 -------
 ylog : whylogs.app.logger.Logger
-    The global session logger
+The global session logger
 

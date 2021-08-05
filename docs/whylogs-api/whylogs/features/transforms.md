@@ -1,3 +1,18 @@
+# Table of Contents
+
+* [whylogs.features.transforms](#whylogs.features.transforms)
+  * [ComposeTransforms](#whylogs.features.transforms.ComposeTransforms)
+  * [Brightness](#whylogs.features.transforms.Brightness)
+    * [\_\_call\_\_](#whylogs.features.transforms.Brightness.__call__)
+  * [Saturation](#whylogs.features.transforms.Saturation)
+    * [\_\_call\_\_](#whylogs.features.transforms.Saturation.__call__)
+  * [Resize](#whylogs.features.transforms.Resize)
+    * [\_\_call\_\_](#whylogs.features.transforms.Resize.__call__)
+  * [Hue](#whylogs.features.transforms.Hue)
+    * [\_\_call\_\_](#whylogs.features.transforms.Hue.__call__)
+  * [SimpleBlur](#whylogs.features.transforms.SimpleBlur)
+    * [\_\_call\_\_](#whylogs.features.transforms.SimpleBlur.__call__)
+
 ---
 sidebar_label: transforms
 title: whylogs.features.transforms
@@ -32,8 +47,8 @@ Outputs the Brightness of each pixel in the image
 **Returns**:
 
 - `np.ndarray` - Converted image.
-  
-  Deleted Parameters:
+
+Deleted Parameters:
 - `pic` _PIL Image or numpy.ndarray_ - Image to be converted to tensor.
 
 ## Saturation Objects
@@ -54,7 +69,7 @@ Outputs the saturation of each pixel in the image
 **Arguments**:
 
 - `img` _Union[Image, np.ndarray]_ - Either a PIL image or numpy array with int8 values
-  
+
 
 **Returns**:
 
@@ -81,7 +96,7 @@ Helper Transform to resize images.
 **Arguments**:
 
 - `img` _Union[ImageType, np.ndarray]_ - Description
-  
+
 
 **Returns**:
 
@@ -125,7 +140,7 @@ Overall metric of how blurry is the image. No overall scale.
 **Arguments**:
 
 - `img` _Union[Image, np.ndarray]_ - Either a PIL image or numpy array with int8 values
-  
+
 
 **Returns**:
 

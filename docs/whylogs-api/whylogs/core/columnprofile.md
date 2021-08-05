@@ -1,3 +1,13 @@
+# Table of Contents
+
+* [whylogs.core.columnprofile](#whylogs.core.columnprofile)
+  * [ColumnProfile](#whylogs.core.columnprofile.ColumnProfile)
+    * [track](#whylogs.core.columnprofile.ColumnProfile.track)
+    * [to\_summary](#whylogs.core.columnprofile.ColumnProfile.to_summary)
+    * [merge](#whylogs.core.columnprofile.ColumnProfile.merge)
+    * [to\_protobuf](#whylogs.core.columnprofile.ColumnProfile.to_protobuf)
+    * [from\_protobuf](#whylogs.core.columnprofile.ColumnProfile.from_protobuf)
+
 ---
 sidebar_label: columnprofile
 title: whylogs.core.columnprofile
@@ -18,30 +28,30 @@ The primary method for
 Parameters
 ----------
 name : str (required)
-    Name of the column profile
+Name of the column profile
 number_tracker : NumberTracker
-    Implements numeric data statistics tracking
+Implements numeric data statistics tracking
 string_tracker : StringTracker
-    Implements string data-type statistics tracking
+Implements string data-type statistics tracking
 schema_tracker : SchemaTracker
-    Implements tracking of schema-related information
+Implements tracking of schema-related information
 counters : CountersTracker
-    Keep count of various things
+Keep count of various things
 frequent_items : FrequentItemsSketch
-    Keep track of all frequent items, even for mixed datatype features
+Keep track of all frequent items, even for mixed datatype features
 cardinality_tracker : HllSketch
-    Track feature cardinality (even for mixed data types)
+Track feature cardinality (even for mixed data types)
 constraints : ValueConstraints
-    Static assertions to be applied to numeric data tracked in this column
+Static assertions to be applied to numeric data tracked in this column
 
 TODO:
-    * Proper TypedDataConverter type checking
-    * Multi-threading/parallelism
+* Proper TypedDataConverter type checking
+* Multi-threading/parallelism
 
 #### track
 
 ```python
- | track(value)
+ | track(value, character_list=None, token_method=None)
 ```
 
 Add `value` to tracking statistics.
@@ -57,7 +67,7 @@ Generate a summary of the statistics
 Returns
 -------
 summary : ColumnSummary
-    Protobuf summary message.
+Protobuf summary message.
 
 #### merge
 
@@ -74,7 +84,7 @@ other : ColumnProfile
 Returns
 -------
 merged : ColumnProfile
-    A new, merged column profile.
+A new, merged column profile.
 
 #### to\_protobuf
 

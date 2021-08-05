@@ -1,3 +1,8 @@
+# Table of Contents
+
+* [whylogs.core.annotation\_profiling](#whylogs.core.annotation_profiling)
+  * [Rectangle](#whylogs.core.annotation_profiling.Rectangle)
+
 ---
 sidebar_label: annotation_profiling
 title: whylogs.core.annotation_profiling

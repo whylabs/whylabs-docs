@@ -1,15 +1,38 @@
+# Table of Contents
+
+* [whylogs.core.datasetprofile](#whylogs.core.datasetprofile)
+  * [DatasetProfile](#whylogs.core.datasetprofile.DatasetProfile)
+    * [session\_timestamp\_ms](#whylogs.core.datasetprofile.DatasetProfile.session_timestamp_ms)
+    * [track\_metrics](#whylogs.core.datasetprofile.DatasetProfile.track_metrics)
+    * [track](#whylogs.core.datasetprofile.DatasetProfile.track)
+    * [track\_array](#whylogs.core.datasetprofile.DatasetProfile.track_array)
+    * [track\_dataframe](#whylogs.core.datasetprofile.DatasetProfile.track_dataframe)
+    * [to\_properties](#whylogs.core.datasetprofile.DatasetProfile.to_properties)
+    * [to\_summary](#whylogs.core.datasetprofile.DatasetProfile.to_summary)
+    * [generate\_constraints](#whylogs.core.datasetprofile.DatasetProfile.generate_constraints)
+    * [flat\_summary](#whylogs.core.datasetprofile.DatasetProfile.flat_summary)
+    * [chunk\_iterator](#whylogs.core.datasetprofile.DatasetProfile.chunk_iterator)
+    * [validate](#whylogs.core.datasetprofile.DatasetProfile.validate)
+    * [merge](#whylogs.core.datasetprofile.DatasetProfile.merge)
+    * [merge\_strict](#whylogs.core.datasetprofile.DatasetProfile.merge_strict)
+    * [serialize\_delimited](#whylogs.core.datasetprofile.DatasetProfile.serialize_delimited)
+    * [to\_protobuf](#whylogs.core.datasetprofile.DatasetProfile.to_protobuf)
+    * [write\_protobuf](#whylogs.core.datasetprofile.DatasetProfile.write_protobuf)
+    * [read\_protobuf](#whylogs.core.datasetprofile.DatasetProfile.read_protobuf)
+    * [from\_protobuf](#whylogs.core.datasetprofile.DatasetProfile.from_protobuf)
+    * [from\_protobuf\_string](#whylogs.core.datasetprofile.DatasetProfile.from_protobuf_string)
+    * [parse\_delimited\_single](#whylogs.core.datasetprofile.DatasetProfile.parse_delimited_single)
+    * [parse\_delimited](#whylogs.core.datasetprofile.DatasetProfile.parse_delimited)
+  * [columns\_chunk\_iterator](#whylogs.core.datasetprofile.columns_chunk_iterator)
+  * [dataframe\_profile](#whylogs.core.datasetprofile.dataframe_profile)
+  * [array\_profile](#whylogs.core.datasetprofile.array_profile)
+
 ---
 sidebar_label: datasetprofile
 title: whylogs.core.datasetprofile
 ---
 
 Defines the primary interface class for tracking dataset statistics.
-
-#### SCALAR\_NAME\_MAPPING
-
-NOTE: I use ordered dicts here to control the ordering of generated columns
-dictionaries are also valid
-Define (some of) the mapping from dataset summary to flat table
 
 ## DatasetProfile Objects
 
@@ -24,24 +47,24 @@ A dataset refers to a collection of columns.
 Parameters
 ----------
 name: str
-    A human readable name for the dataset profile. Could be model name.
-    This is stored under &quot;name&quot; tag
+A human readable name for the dataset profile. Could be model name.
+This is stored under &quot;name&quot; tag
 dataset_timestamp: datetime.datetime
-    The timestamp associated with the data (i.e. batch run). Optional.
+The timestamp associated with the data (i.e. batch run). Optional.
 session_timestamp : datetime.datetime
-    Timestamp of the dataset
+Timestamp of the dataset
 columns : dict
-    Dictionary lookup of `ColumnProfile`s
+Dictionary lookup of `ColumnProfile`s
 tags : dict
-    A dictionary of key-&gt;value. Can be used upstream for aggregating data. Tags must match when merging
-    with another dataset profile object.
+A dictionary of key-&gt;value. Can be used upstream for aggregating data. Tags must match when merging
+with another dataset profile object.
 metadata: dict
-    Metadata that can store arbitrary string mapping. Metadata is not used when aggregating data
-    and can be dropped when merging with another dataset profile object.
+Metadata that can store arbitrary string mapping. Metadata is not used when aggregating data
+and can be dropped when merging with another dataset profile object.
 session_id : str
-    The unique session ID run. Should be a UUID.
+The unique session ID run. Should be a UUID.
 constraints: DatasetConstraints
-    Static assertions to be applied to tracked numeric data and profile summaries.
+Static assertions to be applied to tracked numeric data and profile summaries.
 
 #### session\_timestamp\_ms
 
@@ -55,7 +78,7 @@ Return the session timestamp value in epoch milliseconds.
 #### track\_metrics
 
 ```python
- | track_metrics(targets: List[Union[str, bool, float, int]], predictions: List[Union[str, bool, float, int]], scores: List[float] = None, target_field: str = None, prediction_field: str = None, score_field: str = None)
+ | track_metrics(targets: List[Union[str, bool, float, int]], predictions: List[Union[str, bool, float, int]], scores: List[float] = None, model_type: ModelType = None, target_field: str = None, prediction_field: str = None, score_field: str = None)
 ```
 
 Function to track metrics based on validation data.
@@ -66,11 +89,20 @@ target, prediction, and/or score.
 Parameters
 ----------
 targets : List[Union[str, bool, float, int]]
-    actual validated values
+actual validated values
 predictions : List[Union[str, bool, float, int]]
-    inferred/predicted values
+inferred/predicted values
 scores : List[float], optional
-    assocaited scores for each inferred, all values set to 1 if not passed
+assocaited scores for each inferred, all values set to 1 if not
+passed
+target_field : str, optional
+Description
+prediction_field : str, optional
+Description
+score_field : str, optional
+Description
+model_type : ModelType, optional
+Defaul is Classification type.
 target_field : str, optional
 prediction_field : str, optional
 score_field : str, optional
@@ -79,7 +111,7 @@ score_field : str, optional
 #### track
 
 ```python
- | track(columns, data=None)
+ | track(columns, data=None, character_list=None, token_method=None)
 ```
 
 Add value(s) to tracking statistics for column(s).
@@ -87,12 +119,12 @@ Add value(s) to tracking statistics for column(s).
 Parameters
 ----------
 columns : str, dict
-    Either the name of a column, or a dictionary specifying column
-    names and the data (value) for each column
-    If a string, `data` must be supplied.  Otherwise, `data` is
-    ignored.
+Either the name of a column, or a dictionary specifying column
+names and the data (value) for each column
+If a string, `data` must be supplied.  Otherwise, `data` is
+ignored.
 data : object, None
-    Value to track.  Specify if `columns` is a string.
+Value to track.  Specify if `columns` is a string.
 
 #### track\_array
 
@@ -105,14 +137,14 @@ Track statistics for a numpy array
 Parameters
 ----------
 x : np.ndarray
-    2D array to track.
+2D array to track.
 columns : list
-    Optional column labels
+Optional column labels
 
 #### track\_dataframe
 
 ```python
- | track_dataframe(df: pd.DataFrame)
+ | track_dataframe(df: pd.DataFrame, character_list=None, token_method=None)
 ```
 
 Track statistics for a dataframe
@@ -120,7 +152,7 @@ Track statistics for a dataframe
 Parameters
 ----------
 df : pandas.DataFrame
-    DataFrame to track
+DataFrame to track
 
 #### to\_properties
 
@@ -133,7 +165,7 @@ Return dataset profile related metadata
 Returns
 -------
 properties : DatasetProperties
-    The metadata as a protobuf object.
+The metadata as a protobuf object.
 
 #### to\_summary
 
@@ -146,7 +178,7 @@ Generate a summary of the statistics
 Returns
 -------
 summary : DatasetSummary
-    Protobuf summary message.
+Protobuf summary message.
 
 #### generate\_constraints
 
@@ -159,7 +191,7 @@ Assemble a sparse dict of constraints for all features.
 Returns
 -------
 summary : DatasetConstraints
-    Protobuf constraints message.
+Protobuf constraints message.
 
 #### flat\_summary
 
@@ -206,7 +238,7 @@ other : DatasetProfile
 Returns
 -------
 merged : DatasetProfile
-    New, merged DatasetProfile
+New, merged DatasetProfile
 
 #### merge\_strict
 
@@ -226,7 +258,7 @@ other : DatasetProfile
 Returns
 -------
 merged : DatasetProfile
-    New, merged DatasetProfile
+New, merged DatasetProfile
 
 #### serialize\_delimited
 
@@ -242,7 +274,7 @@ This is useful when you are streaming multiple dataset profile objects
 Returns
 -------
 data : bytes
-    A sequence of bytes
+A sequence of bytes
 
 #### to\_protobuf
 
@@ -264,35 +296,43 @@ message : DatasetProfileMessage
 
 Write the dataset profile to disk in binary format
 
-**Arguments**:
-
-- `protobuf_path`: the local path for storage. The parent directory must already exist
-- `delimited_file`: whether to prefix the data with the length of output or not. Default is True
+Parameters
+----------
+protobuf_path : str
+local path or any path supported supported by smart_open:
+https://github.com/RaRe-Technologies/smart_open#how.
+The parent directory must already exist
+delimited_file : bool, optional
+whether to prefix the data with the length of output or not.
+Default is True
 
 #### read\_protobuf
 
 ```python
  | @staticmethod
- | read_protobuf(protobuf_path: str, delimited_file: bool = True)
+ | read_protobuf(protobuf_path: str, delimited_file: bool = True) -> "DatasetProfile"
 ```
 
 Parse a protobuf file and return a DatasetProfile object
 
-**Arguments**:
 
-- `protobuf_path`: the path of the protobuf data
-- `delimited_file`: whether the data is delimited or not. Default is True
+Parameters
+----------
+protobuf_path : str
+the path of the protobuf data, can be local or any other path supported by smart_open: https://github.com/RaRe-Technologies/smart_open#how
+delimited_file : bool, optional
+whether the data is delimited or not. Default is `True`
 
-**Returns**:
-
-a DatasetProfile object if successful
-:rtype: whylogs.DatasetProfile
+Returns
+-------
+DatasetProfile
+whylogs.DatasetProfile object from the protobuf
 
 #### from\_protobuf
 
 ```python
  | @staticmethod
- | from_protobuf(message: DatasetProfileMessage)
+ | from_protobuf(message: DatasetProfileMessage) -> "DatasetProfile"
 ```
 
 Load from a protobuf message
@@ -300,8 +340,8 @@ Load from a protobuf message
 Parameters
 ----------
 message : DatasetProfileMessage
-    The protobuf message.  Should match the output of
-    `DatasetProfile.to_protobuf()`
+The protobuf message.  Should match the output of
+`DatasetProfile.to_protobuf()`
 
 Returns
 -------
@@ -311,7 +351,7 @@ dataset_profile : DatasetProfile
 
 ```python
  | @staticmethod
- | from_protobuf_string(data: bytes)
+ | from_protobuf_string(data: bytes) -> "DatasetProfile"
 ```
 
 Deserialize a serialized `DatasetProfileMessage`
@@ -319,12 +359,12 @@ Deserialize a serialized `DatasetProfileMessage`
 Parameters
 ----------
 data : bytes
-    The serialized message
+The serialized message
 
 Returns
 -------
 profile : DatasetProfile
-    The deserialized dataset profile
+The deserialized dataset profile
 
 #### parse\_delimited\_single
 
@@ -337,16 +377,16 @@ Parse a single delimited entry from a byte stream
 Parameters
 ----------
 data : bytes
-    The bytestream
+The bytestream
 pos : int
-    The starting position. Default is zero
+The starting position. Default is zero
 
 Returns
 -------
 pos : int
-    Current position in the stream after parsing
+Current position in the stream after parsing
 profile : DatasetProfile
-    A dataset profile
+A dataset profile
 
 #### parse\_delimited
 
@@ -364,12 +404,12 @@ prefixed with the length of the message.
 Parameters
 ----------
 data : bytes
-    The input byte stream
+The input byte stream
 
 Returns
 -------
 profiles : list
-    List of all Dataset profile objects
+List of all Dataset profile objects
 
 #### columns\_chunk\_iterator
 
@@ -382,98 +422,9 @@ Create an iterator to return column messages in batches
 Parameters
 ----------
 iterator
-    An iterator which returns protobuf column messages
+An iterator which returns protobuf column messages
 marker
-    Value used to mark a group of column messages
-
-#### flatten\_summary
-
-```python
-flatten_summary(dataset_summary: DatasetSummary) -> dict
-```
-
-Flatten a DatasetSummary
-
-Parameters
-----------
-dataset_summary : DatasetSummary
-    Summary to flatten
-
-Returns
--------
-data : dict
-    A dictionary with the following keys:
-
-        summary : pandas.DataFrame
-            Per-column summary statistics
-        hist : pandas.Series
-            Series of histogram Series with (column name, histogram) key,
-            value pairs.  Histograms are formatted as a `pandas.Series`
-        frequent_strings : pandas.Series
-            Series of frequent string counts with (column name, counts)
-            key, val pairs.  `counts` are a pandas Series.
-
-Notes
------
-Some relevant info on the summary mapping:
-
-.. code-block:: python
-
-    &gt;&gt;&gt; from whylogs.core.datasetprofile import SCALAR_NAME_MAPPING
-    &gt;&gt;&gt; import json
-    &gt;&gt;&gt; print(json.dumps(SCALAR_NAME_MAPPING, indent=2))
-
-#### flatten\_dataset\_quantiles
-
-```python
-flatten_dataset_quantiles(dataset_summary: DatasetSummary)
-```
-
-Flatten quantiles from a dataset summary
-
-#### flatten\_dataset\_histograms
-
-```python
-flatten_dataset_histograms(dataset_summary: DatasetSummary)
-```
-
-Flatten histograms from a dataset summary
-
-#### flatten\_dataset\_frequent\_numbers
-
-```python
-flatten_dataset_frequent_numbers(dataset_summary: DatasetSummary)
-```
-
-Flatten frequent number counts from a dataset summary
-
-#### flatten\_dataset\_frequent\_strings
-
-```python
-flatten_dataset_frequent_strings(dataset_summary: DatasetSummary)
-```
-
-Flatten frequent strings summaries from a dataset summary
-
-#### get\_dataset\_frame
-
-```python
-get_dataset_frame(dataset_summary: DatasetSummary, mapping: dict = None)
-```
-
-Get a dataframe from scalar values flattened from a dataset summary
-
-Parameters
-----------
-dataset_summary : DatasetSummary
-    The dataset summary.
-mapping : dict, optional
-    Override the default variable mapping.
-
-Returns
--------
-summary : pd.DataFrame
-    Scalar values, flattened and re-named according to `mapping`
+Value used to mark a group of column messages
 
 #### dataframe\_profile
 
@@ -486,12 +437,12 @@ Generate a dataset profile for a dataframe
 Parameters
 ----------
 df : pandas.DataFrame
-    Dataframe to track, treated as a complete dataset.
+Dataframe to track, treated as a complete dataset.
 name : str
-    Name of the dataset
+Name of the dataset
 timestamp : datetime.datetime, float
-    Timestamp of the dataset.  Defaults to current UTC time.  Can be a
-    datetime or UTC epoch seconds.
+Timestamp of the dataset.  Defaults to current UTC time.  Can be a
+datetime or UTC epoch seconds.
 
 Returns
 -------
@@ -508,13 +459,13 @@ Generate a dataset profile for an array
 Parameters
 ----------
 x : np.ndarray
-    Array-like object to track.  Will be treated as an full dataset
+Array-like object to track.  Will be treated as an full dataset
 name : str
-    Name of the dataset
+Name of the dataset
 timestamp : datetime.datetime
-    Timestamp of the dataset.  Defaults to current UTC time
+Timestamp of the dataset.  Defaults to current UTC time
 columns : list
-    Optional column labels
+Optional column labels
 
 Returns
 -------

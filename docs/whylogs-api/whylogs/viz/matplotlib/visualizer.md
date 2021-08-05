@@ -1,3 +1,13 @@
+# Table of Contents
+
+* [whylogs.viz.matplotlib.visualizer](#whylogs.viz.matplotlib.visualizer)
+  * [MatplotlibProfileVisualizer](#whylogs.viz.matplotlib.visualizer.MatplotlibProfileVisualizer)
+    * [available\_plots](#whylogs.viz.matplotlib.visualizer.MatplotlibProfileVisualizer.available_plots)
+    * [plot\_distribution](#whylogs.viz.matplotlib.visualizer.MatplotlibProfileVisualizer.plot_distribution)
+    * [plot\_missing\_values](#whylogs.viz.matplotlib.visualizer.MatplotlibProfileVisualizer.plot_missing_values)
+    * [plot\_uniqueness](#whylogs.viz.matplotlib.visualizer.MatplotlibProfileVisualizer.plot_uniqueness)
+    * [plot\_data\_types](#whylogs.viz.matplotlib.visualizer.MatplotlibProfileVisualizer.plot_data_types)
+
 ---
 sidebar_label: visualizer
 title: whylogs.viz.matplotlib.visualizer

@@ -1,3 +1,10 @@
+# Table of Contents
+
+* [whylogs.core.image\_profiling](#whylogs.core.image_profiling)
+  * [TrackImage](#whylogs.core.image_profiling.TrackImage)
+    * [\_\_call\_\_](#whylogs.core.image_profiling.TrackImage.__call__)
+  * [get\_pil\_image\_metadata](#whylogs.core.image_profiling.get_pil_image_metadata)
+
 ---
 sidebar_label: image_profiling
 title: whylogs.core.image_profiling
@@ -41,7 +48,7 @@ Grab metra data from a PIL Image
 **Arguments**:
 
 - `img` _ImageType_ - PIL Image
-  
+
 
 **Returns**:
 

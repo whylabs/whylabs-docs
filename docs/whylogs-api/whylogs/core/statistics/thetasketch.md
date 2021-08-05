@@ -1,3 +1,15 @@
+# Table of Contents
+
+* [whylogs.core.statistics.thetasketch](#whylogs.core.statistics.thetasketch)
+  * [ThetaSketch](#whylogs.core.statistics.thetasketch.ThetaSketch)
+    * [update](#whylogs.core.statistics.thetasketch.ThetaSketch.update)
+    * [merge](#whylogs.core.statistics.thetasketch.ThetaSketch.merge)
+    * [get\_result](#whylogs.core.statistics.thetasketch.ThetaSketch.get_result)
+    * [serialize](#whylogs.core.statistics.thetasketch.ThetaSketch.serialize)
+    * [deserialize](#whylogs.core.statistics.thetasketch.ThetaSketch.deserialize)
+    * [to\_summary](#whylogs.core.statistics.thetasketch.ThetaSketch.to_summary)
+  * [numbers\_summary](#whylogs.core.statistics.thetasketch.numbers_summary)
+
 ---
 sidebar_label: thetasketch
 title: whylogs.core.statistics.thetasketch
@@ -28,7 +40,7 @@ Update the statistics tracking
 Parameters
 ----------
 value : object
-    Value to follow
+Value to follow
 
 #### merge
 
@@ -41,12 +53,12 @@ Merge another `ThetaSketch` with this one, returning a new object
 Parameters
 ----------
 other : ThetaSketch
-    Other theta sketch
+Other theta sketch
 
 Returns
 -------
 new : ThetaSketch
-    New theta sketch with merged statistics
+New theta sketch with merged statistics
 
 #### get\_result
 
@@ -59,7 +71,7 @@ Generate a theta sketch
 Returns
 -------
 compact_sketch : datasketches.compact_theta_sketch
-    Read-only compact theta sketch with full statistics.
+Read-only compact theta sketch with full statistics.
 
 #### serialize
 
@@ -74,7 +86,7 @@ Note that serialization only preserves the object approximately.
 Returns
 -------
 msg : bytes
-    Serialized to `bytes`
+Serialized to `bytes`
 
 #### deserialize
 
@@ -90,15 +102,15 @@ Deserialize from a serialized message.
 Parameters
 ----------
 msg : bytes
-    Serialized object.  can be a serialized version of:
-        * ThetaSketch
-        * datasketches.update_theta_sketch,
-        * datasketches.compact_theta_sketch
+Serialized object.  can be a serialized version of:
+* ThetaSketch
+* datasketches.update_theta_sketch,
+* datasketches.compact_theta_sketch
 
 Returns
 -------
 sketch : ThetaSketch
-    ThetaSketch object
+ThetaSketch object
 
 #### to\_summary
 
@@ -111,12 +123,12 @@ Generate a summary protobuf message
 Parameters
 ----------
 num_std_devs : float
-    For estimating bounds
+For estimating bounds
 
 Returns
 -------
 summary : UniqueCountSummary
-    Summary protobuf message
+Summary protobuf message
 
 #### numbers\_summary
 
@@ -132,10 +144,10 @@ Parameters
 sketch
 
 num_std_devs : float
-    For estimating bounds
+For estimating bounds
 
 Returns
 -------
 summary : UniqueCountSummary
-    Summary protobuf message
+Summary protobuf message
 

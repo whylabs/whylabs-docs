@@ -1,3 +1,10 @@
+# Table of Contents
+
+* [whylogs.core.types.typeddataconverter](#whylogs.core.types.typeddataconverter)
+  * [TypedDataConverter](#whylogs.core.types.typeddataconverter.TypedDataConverter)
+    * [convert](#whylogs.core.types.typeddataconverter.TypedDataConverter.convert)
+    * [get\_type](#whylogs.core.types.typeddataconverter.TypedDataConverter.get_type)
+
 ---
 sidebar_label: typeddataconverter
 title: whylogs.core.types.typeddataconverter
@@ -17,8 +24,8 @@ To see available types:
 
 .. code-block:: python
 
-    &gt;&gt;&gt; from whylogs.core.types.typeddataconverter import TYPES
-    &gt;&gt;&gt; print(&quot;\\n&quot;.join(sorted(TYPES.keys())))
+&gt;&gt;&gt; from whylogs.core.types.typeddataconverter import TYPES
+&gt;&gt;&gt; print(&quot;\\n&quot;.join(sorted(TYPES.keys())))
 
 #### convert
 
@@ -48,7 +55,7 @@ available types.
 Parameters
 ----------
 typed_data
-    Data processed by TypedDataConverter.convert
+Data processed by TypedDataConverter.convert
 
 Returns
 -------

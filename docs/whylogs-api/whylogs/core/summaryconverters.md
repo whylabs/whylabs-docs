@@ -1,3 +1,11 @@
+# Table of Contents
+
+* [whylogs.core.summaryconverters](#whylogs.core.summaryconverters)
+  * [from\_sketch](#whylogs.core.summaryconverters.from_sketch)
+  * [from\_string\_sketch](#whylogs.core.summaryconverters.from_string_sketch)
+  * [quantiles\_from\_sketch](#whylogs.core.summaryconverters.quantiles_from_sketch)
+  * [histogram\_from\_sketch](#whylogs.core.summaryconverters.histogram_from_sketch)
+
 ---
 sidebar_label: summaryconverters
 title: whylogs.core.summaryconverters
@@ -16,9 +24,9 @@ Generate a protobuf summary message from a datasketches theta sketch
 Parameters
 ----------
 sketch
-    Theta sketch to summarize
+Theta sketch to summarize
 num_std_devs
-    Number of standard deviations for calculating bounds
+Number of standard deviations for calculating bounds
 
 Returns
 -------
@@ -35,7 +43,7 @@ Generate a protobuf summary message from a string sketch
 Parameters
 ----------
 sketch
-    Frequent strings sketch
+Frequent strings sketch
 
 Returns
 -------
@@ -52,10 +60,10 @@ Calculate quantiles from a data sketch
 Parameters
 ----------
 sketch : kll_floats_sketch
-    Data sketch
+Data sketch
 quantiles : list-like
-    Override the default quantiles.  Should be a list of values from
-    0 to 1 inclusive.
+Override the default quantiles.  Should be a list of values from
+0 to 1 inclusive.
 
 #### histogram\_from\_sketch
 
@@ -68,14 +76,14 @@ Generate a summary of a kll_floats_sketch, including a histogram
 Parameters
 ----------
 sketch : kll_floats_sketch
-    Data sketch
+Data sketch
 max_buckets : int
-    Override the default maximum number of buckets
+Override the default maximum number of buckets
 avg_per_bucket : int
-    Override the default target number of items per bucket.
+Override the default target number of items per bucket.
 
 Returns
 -------
 histogram : HistogramSummary
-    Protobuf histogram message
+Protobuf histogram message
 
