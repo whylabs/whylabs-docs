@@ -1,3 +1,8 @@
+# Table of Contents
+
+* [whylogs.cli.cli](#whylogs.cli.cli)
+  * [cli](#whylogs.cli.cli.cli)
+
 ---
 sidebar_label: cli
 title: whylogs.cli.cli

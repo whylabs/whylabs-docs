@@ -1,3 +1,8 @@
+# Table of Contents
+
+* [whylogs.util.stats](#whylogs.util.stats)
+  * [is\_discrete](#whylogs.util.stats.is_discrete)
+
 ---
 sidebar_label: stats
 title: whylogs.util.stats
@@ -19,12 +24,12 @@ The default assumption is that features are not discrete.
 Parameters
 ----------
 num_records : int
-    The number of observed records
+The number of observed records
 cardinality : int
-    Number of unique observed values
+Number of unique observed values
 
 Returns
 -------
 discrete : bool
-    Whether the feature is discrete
+Whether the feature is discrete
 

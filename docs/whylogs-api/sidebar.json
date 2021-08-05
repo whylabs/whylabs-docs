@@ -4,39 +4,57 @@
       "items": [
         {
           "items": [
-            "whylogs-api/whylogs/core/summaryconverters",
-            "whylogs-api/whylogs/core/annotation_profiling",
-            "whylogs-api/whylogs/core/image_profiling",
-            "whylogs-api/whylogs/core/datasetprofile",
-            "whylogs-api/whylogs/core/model_profile",
-            "whylogs-api/whylogs/core/columnprofile",
+            "whylogs-api/whylogs/app/config",
+            "whylogs-api/whylogs/app/logger",
+            "whylogs-api/whylogs/app/metadata_writer",
+            "whylogs-api/whylogs/app/output_formats",
+            "whylogs-api/whylogs/app/session",
+            "whylogs-api/whylogs/app/utils",
+            "whylogs-api/whylogs/app/writers"
+          ],
+          "label": "whylogs.app",
+          "type": "category"
+        },
+        {
+          "items": [
+            "whylogs-api/whylogs/cli/cli",
+            "whylogs-api/whylogs/cli/demo_cli",
+            "whylogs-api/whylogs/cli/init"
+          ],
+          "label": "whylogs.cli",
+          "type": "category"
+        },
+        {
+          "items": [
             {
               "items": [
-                "whylogs-api/whylogs/core/statistics/schematracker",
-                "whylogs-api/whylogs/core/statistics/counterstracker",
-                "whylogs-api/whylogs/core/statistics/thetasketch",
-                "whylogs-api/whylogs/core/statistics/constraints",
-                "whylogs-api/whylogs/core/statistics/numbertracker",
-                {
-                  "items": [
-                    "whylogs-api/whylogs/core/statistics/datatypes/variancetracker",
-                    "whylogs-api/whylogs/core/statistics/datatypes/floattracker",
-                    "whylogs-api/whylogs/core/statistics/datatypes/integertracker",
-                    "whylogs-api/whylogs/core/statistics/datatypes/stringtracker"
-                  ],
-                  "label": "whylogs.core.statistics.datatypes",
-                  "type": "category"
-                }
+                "whylogs-api/whylogs/core/metrics/confusion_matrix",
+                "whylogs-api/whylogs/core/metrics/model_metrics",
+                "whylogs-api/whylogs/core/metrics/nlp_metrics",
+                "whylogs-api/whylogs/core/metrics/regression_metrics"
               ],
-              "label": "whylogs.core.statistics",
+              "label": "whylogs.core.metrics",
               "type": "category"
             },
             {
               "items": [
-                "whylogs-api/whylogs/core/metrics/model_metrics",
-                "whylogs-api/whylogs/core/metrics/confusion_matrix"
+                {
+                  "items": [
+                    "whylogs-api/whylogs/core/statistics/datatypes/floattracker",
+                    "whylogs-api/whylogs/core/statistics/datatypes/integertracker",
+                    "whylogs-api/whylogs/core/statistics/datatypes/variancetracker"
+                  ],
+                  "label": "whylogs.core.statistics.datatypes",
+                  "type": "category"
+                },
+                "whylogs-api/whylogs/core/statistics/constraints",
+                "whylogs-api/whylogs/core/statistics/counterstracker",
+                "whylogs-api/whylogs/core/statistics/numbertracker",
+                "whylogs-api/whylogs/core/statistics/schematracker",
+                "whylogs-api/whylogs/core/statistics/stringtracker",
+                "whylogs-api/whylogs/core/statistics/thetasketch"
               ],
-              "label": "whylogs.core.metrics",
+              "label": "whylogs.core.statistics",
               "type": "category"
             },
             {
@@ -45,32 +63,23 @@
               ],
               "label": "whylogs.core.types",
               "type": "category"
-            }
+            },
+            "whylogs-api/whylogs/core/annotation_profiling",
+            "whylogs-api/whylogs/core/columnprofile",
+            "whylogs-api/whylogs/core/datasetprofile",
+            "whylogs-api/whylogs/core/flatten_datasetprofile",
+            "whylogs-api/whylogs/core/image_profiling",
+            "whylogs-api/whylogs/core/model_profile",
+            "whylogs-api/whylogs/core/summaryconverters"
           ],
           "label": "whylogs.core",
           "type": "category"
         },
         {
           "items": [
-            "whylogs-api/whylogs/app/config",
-            "whylogs-api/whylogs/app/output_formats",
-            "whylogs-api/whylogs/app/session",
-            "whylogs-api/whylogs/app/writers",
-            "whylogs-api/whylogs/app/logger"
+            "whylogs-api/whylogs/features/transforms"
           ],
-          "label": "whylogs.app",
-          "type": "category"
-        },
-        {
-          "items": [
-            "whylogs-api/whylogs/util/time",
-            "whylogs-api/whylogs/util/stats",
-            "whylogs-api/whylogs/util/dsketch",
-            "whylogs-api/whylogs/util/protobuf",
-            "whylogs-api/whylogs/util/varint",
-            "whylogs-api/whylogs/util/data"
-          ],
-          "label": "whylogs.util",
+          "label": "whylogs.features",
           "type": "category"
         },
         {
@@ -82,9 +91,9 @@
         },
         {
           "items": [
-            "whylogs-api/whylogs/features/transforms"
+            "whylogs-api/whylogs/logs/__init__"
           ],
-          "label": "whylogs.features",
+          "label": "whylogs.logs",
           "type": "category"
         },
         {
@@ -98,33 +107,30 @@
         },
         {
           "items": [
-            "whylogs-api/whylogs/cli/cli",
-            "whylogs-api/whylogs/cli/init",
-            "whylogs-api/whylogs/cli/demo_cli"
+            "whylogs-api/whylogs/util/data",
+            "whylogs-api/whylogs/util/dsketch",
+            "whylogs-api/whylogs/util/protobuf",
+            "whylogs-api/whylogs/util/stats",
+            "whylogs-api/whylogs/util/time",
+            "whylogs-api/whylogs/util/varint"
           ],
-          "label": "whylogs.cli",
+          "label": "whylogs.util",
           "type": "category"
         },
         {
           "items": [
-            "whylogs-api/whylogs/viz/base",
-            "whylogs-api/whylogs/viz/visualizer",
             {
               "items": [
                 "whylogs-api/whylogs/viz/matplotlib/visualizer"
               ],
               "label": "whylogs.viz.matplotlib",
               "type": "category"
-            }
+            },
+            "whylogs-api/whylogs/viz/base",
+            "whylogs-api/whylogs/viz/browser_viz",
+            "whylogs-api/whylogs/viz/visualizer"
           ],
           "label": "whylogs.viz",
-          "type": "category"
-        },
-        {
-          "items": [
-            "whylogs-api/whylogs/logs/__init__"
-          ],
-          "label": "whylogs.logs",
           "type": "category"
         }
       ],

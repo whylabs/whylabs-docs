@@ -1,3 +1,8 @@
+# Table of Contents
+
+* [whylogs.logs](#whylogs.logs)
+  * [display\_logging](#whylogs.logs.display_logging)
+
 ---
 sidebar_label: logs
 title: whylogs.logs
@@ -16,7 +21,7 @@ Convenience utility for setting whylogs to print logs to stdout.
 Parameters
 ----------
 level : str
-    Logging level
+Logging level
 root_logger : bool, default=False
-    Redirect to the root logger.
+Redirect to the root logger.
 

@@ -1,3 +1,26 @@
+# Table of Contents
+
+* [whylogs.util.dsketch](#whylogs.util.dsketch)
+  * [deserialize\_kll\_floats\_sketch](#whylogs.util.dsketch.deserialize_kll_floats_sketch)
+  * [deserialize\_frequent\_strings\_sketch](#whylogs.util.dsketch.deserialize_frequent_strings_sketch)
+  * [FrequentItemsSketch](#whylogs.util.dsketch.FrequentItemsSketch)
+    * [get\_apriori\_error](#whylogs.util.dsketch.FrequentItemsSketch.get_apriori_error)
+    * [get\_frequent\_items](#whylogs.util.dsketch.FrequentItemsSketch.get_frequent_items)
+    * [merge](#whylogs.util.dsketch.FrequentItemsSketch.merge)
+    * [copy](#whylogs.util.dsketch.FrequentItemsSketch.copy)
+    * [serialize](#whylogs.util.dsketch.FrequentItemsSketch.serialize)
+    * [update](#whylogs.util.dsketch.FrequentItemsSketch.update)
+    * [to\_summary](#whylogs.util.dsketch.FrequentItemsSketch.to_summary)
+    * [to\_protobuf](#whylogs.util.dsketch.FrequentItemsSketch.to_protobuf)
+    * [from\_protobuf](#whylogs.util.dsketch.FrequentItemsSketch.from_protobuf)
+    * [deserialize](#whylogs.util.dsketch.FrequentItemsSketch.deserialize)
+  * [FrequentNumbersSketch](#whylogs.util.dsketch.FrequentNumbersSketch)
+    * [copy](#whylogs.util.dsketch.FrequentNumbersSketch.copy)
+    * [to\_summary](#whylogs.util.dsketch.FrequentNumbersSketch.to_summary)
+    * [to\_protobuf](#whylogs.util.dsketch.FrequentNumbersSketch.to_protobuf)
+    * [deserialize](#whylogs.util.dsketch.FrequentNumbersSketch.deserialize)
+    * [flatten\_summary](#whylogs.util.dsketch.FrequentNumbersSketch.flatten_summary)
+
 ---
 sidebar_label: dsketch
 title: whylogs.util.dsketch
@@ -18,15 +41,15 @@ whylogs histograms are serialized as kll floats sketches
 Parameters
 ----------
 x : bytes
-    Serialized sketch
+Serialized sketch
 kind : str, optional
-    Specify type of sketch: &#x27;float&#x27; or &#x27;int&#x27;
+Specify type of sketch: &#x27;float&#x27; or &#x27;int&#x27;
 
 Returns
 -------
 sketch : `kll_floats_sketch`, `kll_ints_sketch`, or None
-    If `x` is an empty sketch, return None, else return the deserialized
-    sketch.
+If `x` is an empty sketch, return None, else return the deserialized
+sketch.
 
 #### deserialize\_frequent\_strings\_sketch
 
@@ -41,13 +64,13 @@ Wrapper for `datasketches.frequent_strings_sketch.deserialize`
 Parameters
 ----------
 x : bytes
-    Serialized sketch
+Serialized sketch
 
 Returns
 -------
 sketch : `datasketches.frequent_strings_sketch`, None
-    If `x` is an empty string sketch, returns None, else returns the
-    deserialized string sketch
+If `x` is an empty string sketch, returns None, else returns the
+deserialized string sketch
 
 ## FrequentItemsSketch Objects
 
@@ -64,10 +87,10 @@ frequent number tracking.
 Parameters
 ----------
 lg_max_k : int, optional
-    Parameter controlling the size and accuracy of the sketch.  A larger
-    number increases accuracy and the memory requirements for the sketch
+Parameter controlling the size and accuracy of the sketch.  A larger
+number increases accuracy and the memory requirements for the sketch
 sketch : datasketches.frequent_strings_sketch, optional
-    Initialize with an existing frequent strings sketch
+Initialize with an existing frequent strings sketch
 
 #### get\_apriori\_error
 
@@ -80,13 +103,13 @@ Return an apriori estimate of the uncertainty for various parameters
 Parameters
 ----------
 lg_max_map_size : int
-    The `lg_max_k` value
+The `lg_max_k` value
 estimated_total_weight
-    Total weight (see :func:`FrequentItems.get_total_weight`)
+Total weight (see :func:`FrequentItems.get_total_weight`)
 Returns
 -------
 error : float
-    Approximate uncertainty
+Approximate uncertainty
 
 #### get\_frequent\_items
 
@@ -100,17 +123,17 @@ Retrieve the frequent items.
 Parameters
 ----------
 err_type : datasketches.frequent_items_error_type
-    Override default error type
+Override default error type
 threshold : int
-    Minimum count for returned items
+Minimum count for returned items
 decode : bool (default=True)
-    Decode the returned values.  Internally, all items are encoded
-    as strings.
+Decode the returned values.  Internally, all items are encoded
+as strings.
 
 Returns
 -------
 items : list
-    A list of tuples of items: ``[(item, count)]``
+A list of tuples of items: ``[(item, count)]``
 
 #### merge
 
@@ -125,7 +148,7 @@ This object will not be modified.  This operation is commutative.
 Parameters
 ----------
 other: FrequentItemsSketch
-    The other sketch
+The other sketch
 
 #### copy
 
@@ -136,7 +159,7 @@ other: FrequentItemsSketch
 Returns
 -------
 sketch : FrequentItemsSketch
-    A copy of this sketch
+A copy of this sketch
 
 #### serialize
 
@@ -151,7 +174,7 @@ See also :func:`FrequentItemsSketch.deserialize`
 Returns
 -------
 data : bytes
-    Serialized object.
+Serialized object.
 
 #### update
 
@@ -164,9 +187,9 @@ Track an item.
 Parameters
 ----------
 x : object
-    Item to track
+Item to track
 weight : int
-    Number of times the item appears
+Number of times the item appears
 
 #### to\_summary
 
@@ -180,15 +203,15 @@ items.
 Parameters
 ----------
 max_items : int
-    Maximum number of items to return.  The most frequent items will
-    be returned
+Maximum number of items to return.  The most frequent items will
+be returned
 min_count : int
-    Minimum number counts for all returned items
+Minimum number counts for all returned items
 
 Returns
 -------
 summary : FrequentItemsSummary
-    Protobuf summary message
+Protobuf summary message
 
 #### to\_protobuf
 
@@ -236,7 +259,7 @@ A class to implement frequent number counting
 Returns
 -------
 self_copy : FrequentNumbersSketch
-    A copy of this object
+A copy of this object
 
 #### to\_summary
 
@@ -250,15 +273,15 @@ items.
 Parameters
 ----------
 max_items : int
-    Maximum number of items to return.  The most frequent items will
-    be returned
+Maximum number of items to return.  The most frequent items will
+be returned
 min_count : int
-    Minimum number counts for all returned items
+Minimum number counts for all returned items
 
 Returns
 -------
 summary : FrequentNumbersSummary
-    Protobuf summary message
+Protobuf summary message
 
 #### to\_protobuf
 

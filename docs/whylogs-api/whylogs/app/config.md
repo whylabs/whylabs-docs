@@ -1,3 +1,21 @@
+# Table of Contents
+
+* [whylogs.app.config](#whylogs.app.config)
+  * [ALL\_SUPPORTED\_FORMATS](#whylogs.app.config.ALL_SUPPORTED_FORMATS)
+  * [WriterConfig](#whylogs.app.config.WriterConfig)
+    * [to\_yaml](#whylogs.app.config.WriterConfig.to_yaml)
+    * [from\_yaml](#whylogs.app.config.WriterConfig.from_yaml)
+  * [MetadataConfig](#whylogs.app.config.MetadataConfig)
+    * [to\_yaml](#whylogs.app.config.MetadataConfig.to_yaml)
+    * [from\_yaml](#whylogs.app.config.MetadataConfig.from_yaml)
+  * [SessionConfig](#whylogs.app.config.SessionConfig)
+    * [to\_yaml](#whylogs.app.config.SessionConfig.to_yaml)
+    * [from\_yaml](#whylogs.app.config.SessionConfig.from_yaml)
+  * [WriterConfigSchema](#whylogs.app.config.WriterConfigSchema)
+  * [MetadataConfigSchema](#whylogs.app.config.MetadataConfigSchema)
+  * [SessionConfigSchema](#whylogs.app.config.SessionConfigSchema)
+  * [load\_config](#whylogs.app.config.load_config)
+
 ---
 sidebar_label: config
 title: whylogs.app.config
@@ -28,24 +46,24 @@ See also:
 Parameters
 ----------
 type : str
-    Destination for the writer output, e.g. &#x27;local&#x27; or &#x27;s3&#x27;
+Destination for the writer output, e.g. &#x27;local&#x27; or &#x27;s3&#x27;
 formats : list
-    All output formats.  See :data:`ALL_SUPPORTED_FORMATS`
+All output formats.  See :data:`ALL_SUPPORTED_FORMATS`
 output_path : str
-    Prefix of where to output files.  A directory for `type = &#x27;local&#x27;`,
-    or key prefix for `type = &#x27;s3&#x27;`
+Prefix of where to output files.  A directory for `type = &#x27;local&#x27;`,
+or key prefix for `type = &#x27;s3&#x27;`
 path_template : str, optional
-    Templatized path output using standard python string templates.
-    Variables are accessed via $identifier or ${identifier}.
-    See :func:`whylogs.app.writers.Writer.template_params` for a list of
-    available identifers.
-    Default = :data:`whylogs.app.writers.DEFAULT_PATH_TEMPLATE`
+Templatized path output using standard python string templates.
+Variables are accessed via $identifier or ${identifier}.
+See :func:`whylogs.app.writers.Writer.template_params` for a list of
+available identifers.
+Default = :data:`whylogs.app.writers.DEFAULT_PATH_TEMPLATE`
 filename_template : str, optional
-    Templatized output filename using standardized python string templates.
-    Variables are accessed via $identifier or ${identifier}.
-    See :func:`whylogs.app.writers.Writer.template_params` for a list of
-    available identifers.
-    Default = :data:`whylogs.app.writers.DEFAULT_FILENAME_TEMPLATE`
+Templatized output filename using standardized python string templates.
+Variables are accessed via $identifier or ${identifier}.
+See :func:`whylogs.app.writers.Writer.template_params` for a list of
+available identifers.
+Default = :data:`whylogs.app.writers.DEFAULT_FILENAME_TEMPLATE`
 
 #### to\_yaml
 
@@ -58,8 +76,8 @@ Serialize this config to YAML
 Parameters
 ----------
 stream
-    If None (default) return a string, else dump the yaml into this
-    stream.
+If None (default) return a string, else dump the yaml into this
+stream.
 
 #### from\_yaml
 
@@ -73,15 +91,81 @@ Load config from yaml
 Parameters
 ----------
 stream : str, file-obj
-    String or file-like object to load yaml from
+String or file-like object to load yaml from
 
 kwargs
-    ignored
+ignored
 
 Returns
 -------
 config : `WriterConfig`
-    Generated config
+Generated config
+
+## MetadataConfig Objects
+
+```python
+class MetadataConfig()
+```
+
+Config for whylogs metadata
+
+See also:
+
+* :class:`MetadataConfigSchema`
+* :class:`whylogs.app.writers.Writer`
+* :func:`whylogs.app.writers.writer_from_config`
+
+Parameters
+----------
+type : str
+Destination for the writer output, e.g. &#x27;local&#x27; or &#x27;s3&#x27;
+output_path : str
+Prefix of where to output files.  A directory for `type = &#x27;local&#x27;`,
+or key prefix for `type = &#x27;s3&#x27;`
+input_path : str
+Path to search for pre-calculated segment files. Paths separated by &#x27;:&#x27;.
+path_template : str, optional
+Templatized path output using standard python string templates.
+Variables are accessed via $identifier or ${identifier}.
+See :func:`whylogs.app.writers.Writer.template_params` for a list of
+available identifers.
+Default = :data:`whylogs.app.metadata_writer.DEFAULT_PATH_TEMPLATE`
+
+#### to\_yaml
+
+```python
+ | to_yaml(stream=None)
+```
+
+Serialize this config to YAML
+
+Parameters
+----------
+stream
+If None (default) return a string, else dump the yaml into this
+stream.
+
+#### from\_yaml
+
+```python
+ | @staticmethod
+ | from_yaml(stream, **kwargs)
+```
+
+Load config from yaml
+
+Parameters
+----------
+stream : str, file-obj
+String or file-like object to load yaml from
+
+kwargs
+ignored
+
+Returns
+-------
+config : `WriterConfig`
+Generated config
 
 ## SessionConfig Objects
 
@@ -96,18 +180,20 @@ See also :class:`SessionConfigSchema`
 Parameters
 ----------
 project : str
-    Project associated with this whylogs session
+Project associated with this whylogs session
 pipeline : str
-    Name of the associated data pipeline
+Name of the associated data pipeline
 writers : list
-    A list of `WriterConfig` objects defining writer outputs
+A list of `WriterConfig` objects defining writer outputs
+metadata : MetadataConfig
+A MetadataConfiguration object. If none, will replace with default.
 verbose : bool, default=False
-    Output verbosity
+Output verbosity
 with_rotation_time: str, default = None, to rotate profiles with time, takes values of overall rotation interval,
-        &quot;s&quot; for seconds
-        &quot;m&quot; for minutes
-        &quot;h&quot; for hours
-        &quot;d&quot; for days
+&quot;s&quot; for seconds
+&quot;m&quot; for minutes
+&quot;h&quot; for hours
+&quot;d&quot; for days
 
 cache_size: int default =1, sets how many dataprofiles to cache in logger during rotation
 
@@ -122,8 +208,8 @@ Serialize this config to YAML
 Parameters
 ----------
 stream
-    If None (default) return a string, else dump the yaml into this
-    stream.
+If None (default) return a string, else dump the yaml into this
+stream.
 
 #### from\_yaml
 
@@ -137,12 +223,12 @@ Load config from yaml
 Parameters
 ----------
 stream : str, file-obj
-    String or file-like object to load yaml from
+String or file-like object to load yaml from
 
 Returns
 -------
 config : SessionConfig
-    Generated config
+Generated config
 
 ## WriterConfigSchema Objects
 
@@ -151,6 +237,14 @@ class WriterConfigSchema(Schema)
 ```
 
 Marshmallow schema for :class:`WriterConfig` class.
+
+## MetadataConfigSchema Objects
+
+```python
+class MetadataConfigSchema(Schema)
+```
+
+Marshmallow schema for :class:`MetadataConfig` class.
 
 ## SessionConfigSchema Objects
 
@@ -179,6 +273,6 @@ first valid file will be used
 Returns
 -------
 config : SessionConfig, None
-    Config for the logger, if a valid config file is found, else returns
-    `None`.
+Config for the logger, if a valid config file is found, else returns
+`None`.
 

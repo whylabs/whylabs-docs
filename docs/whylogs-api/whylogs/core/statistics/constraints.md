@@ -1,3 +1,10 @@
+# Table of Contents
+
+* [whylogs.core.statistics.constraints](#whylogs.core.statistics.constraints)
+  * [logger](#whylogs.core.statistics.constraints.logger)
+  * [ValueConstraint](#whylogs.core.statistics.constraints.ValueConstraint)
+  * [SummaryConstraint](#whylogs.core.statistics.constraints.SummaryConstraint)
+
 ---
 sidebar_label: constraints
 title: whylogs.core.statistics.constraints
@@ -22,15 +29,15 @@ When associated with a ColumnProfile, the relation is evaluated for every incomi
 Parameters
 ----------
 op : whylogs.proto.Op (required)
-    Enumeration of binary comparison operator applied between static value and incoming stream.
-    Enum values are mapped to operators like &#x27;==&#x27;, &#x27;&lt;&#x27;, and &#x27;&lt;=&#x27;, etc.
+Enumeration of binary comparison operator applied between static value and incoming stream.
+Enum values are mapped to operators like &#x27;==&#x27;, &#x27;&lt;&#x27;, and &#x27;&lt;=&#x27;, etc.
 value :  (required)
-    Static value to compare against incoming stream using operator specified in `op`.
+Static value to compare against incoming stream using operator specified in `op`.
 name : str
-    Name of the constraint used for reporting
+Name of the constraint used for reporting
 verbose : bool
-    If true, log every application of this constraint that fails.
-    Useful to identify specific streaming values that fail the constraint.
+If true, log every application of this constraint that fails.
+Useful to identify specific streaming values that fail the constraint.
 
 ## SummaryConstraint Objects
 
@@ -41,25 +48,25 @@ class SummaryConstraint()
 Summary constraints specify a relationship between a summary field and a static value,
 or between two summary fields.
 e.g.     &#x27;min&#x27; &lt; 6
-         &#x27;std_dev&#x27; &lt; 2.17
-         &#x27;min&#x27; &gt; &#x27;avg&#x27;
+&#x27;std_dev&#x27; &lt; 2.17
+&#x27;min&#x27; &gt; &#x27;avg&#x27;
 
 Parameters
 ----------
 first_field : str
-    Name of field in NumberSummary that will be compared against either a second field or a static value.
+Name of field in NumberSummary that will be compared against either a second field or a static value.
 op : whylogs.proto.Op (required)
-    Enumeration of binary comparison operator applied between summary values.
-    Enum values are mapped to operators like &#x27;==&#x27;, &#x27;&lt;&#x27;, and &#x27;&lt;=&#x27;, etc.
+Enumeration of binary comparison operator applied between summary values.
+Enum values are mapped to operators like &#x27;==&#x27;, &#x27;&lt;&#x27;, and &#x27;&lt;=&#x27;, etc.
 value :  (one-of)
-    Static value to be compared against summary field specified in `first_field`.
-    Only one of `value` or `second_field` should be supplied.
+Static value to be compared against summary field specified in `first_field`.
+Only one of `value` or `second_field` should be supplied.
 second_field :  (one-of)
-    Name of second field in NumberSummary to be compared against summary field specified in `first_field`.
-    Only one of `value` or `second_field` should be supplied.
+Name of second field in NumberSummary to be compared against summary field specified in `first_field`.
+Only one of `value` or `second_field` should be supplied.
 name : str
-    Name of the constraint used for reporting
+Name of the constraint used for reporting
 verbose : bool
-    If true, log every application of this constraint that fails.
-    Useful to identify specific streaming values that fail the constraint.
+If true, log every application of this constraint that fails.
+Useful to identify specific streaming values that fail the constraint.
 

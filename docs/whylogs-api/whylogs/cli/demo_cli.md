@@ -1,3 +1,9 @@
+# Table of Contents
+
+* [whylogs.cli.demo\_cli](#whylogs.cli.demo_cli)
+  * [init](#whylogs.cli.demo_cli.init)
+  * [cli](#whylogs.cli.demo_cli.cli)
+
 ---
 sidebar_label: demo_cli
 title: whylogs.cli.demo_cli

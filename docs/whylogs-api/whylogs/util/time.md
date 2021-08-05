@@ -1,3 +1,9 @@
+# Table of Contents
+
+* [whylogs.util.time](#whylogs.util.time)
+  * [to\_utc\_ms](#whylogs.util.time.to_utc_ms)
+  * [from\_utc\_ms](#whylogs.util.time.from_utc_ms)
+
 ---
 sidebar_label: time
 title: whylogs.util.time
@@ -16,7 +22,7 @@ Convert a datetime object to UTC epoch milliseconds
 Returns
 -------
 timstamp_ms : int
-    Timestamp
+Timestamp
 
 #### from\_utc\_ms
 
@@ -29,10 +35,10 @@ Convert a UTC epoch milliseconds timestamp to a datetime object
 Parameters
 ----------
 utc : int
-    Timestamp
+Timestamp
 
 Returns
 -------
 dt : datetime.datetime
-    Datetime object
+Datetime object
 

@@ -1,3 +1,14 @@
+# Table of Contents
+
+* [whylogs.core.statistics.datatypes.floattracker](#whylogs.core.statistics.datatypes.floattracker)
+  * [FloatTracker](#whylogs.core.statistics.datatypes.floattracker.FloatTracker)
+    * [update](#whylogs.core.statistics.datatypes.floattracker.FloatTracker.update)
+    * [add\_integers](#whylogs.core.statistics.datatypes.floattracker.FloatTracker.add_integers)
+    * [mean](#whylogs.core.statistics.datatypes.floattracker.FloatTracker.mean)
+    * [merge](#whylogs.core.statistics.datatypes.floattracker.FloatTracker.merge)
+    * [to\_protobuf](#whylogs.core.statistics.datatypes.floattracker.FloatTracker.to_protobuf)
+    * [from\_protobuf](#whylogs.core.statistics.datatypes.floattracker.FloatTracker.from_protobuf)
+
 ---
 sidebar_label: floattracker
 title: whylogs.core.statistics.datatypes.floattracker
@@ -14,13 +25,13 @@ Track statistics for floating point numbers
 Parameters
 ---------
 min : float
-    Current min value
+Current min value
 max : float
-    Current max value
+Current max value
 sum : float
-    Sum of the numbers
+Sum of the numbers
 count : int
-    Total count of numbers
+Total count of numbers
 
 #### update
 
@@ -62,12 +73,12 @@ Merge this tracker with another.
 Parameters
 ----------
 other : FloatTracker
-    The other float tracker
+The other float tracker
 
 Returns
 -------
 merged : FloatTracker
-    A new float tracker
+A new float tracker
 
 #### to\_protobuf
 

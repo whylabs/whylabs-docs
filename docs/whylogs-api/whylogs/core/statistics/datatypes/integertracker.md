@@ -1,3 +1,14 @@
+# Table of Contents
+
+* [whylogs.core.statistics.datatypes.integertracker](#whylogs.core.statistics.datatypes.integertracker)
+  * [IntTracker](#whylogs.core.statistics.datatypes.integertracker.IntTracker)
+    * [set\_defaults](#whylogs.core.statistics.datatypes.integertracker.IntTracker.set_defaults)
+    * [mean](#whylogs.core.statistics.datatypes.integertracker.IntTracker.mean)
+    * [update](#whylogs.core.statistics.datatypes.integertracker.IntTracker.update)
+    * [merge](#whylogs.core.statistics.datatypes.integertracker.IntTracker.merge)
+    * [to\_protobuf](#whylogs.core.statistics.datatypes.integertracker.IntTracker.to_protobuf)
+    * [from\_protobuf](#whylogs.core.statistics.datatypes.integertracker.IntTracker.from_protobuf)
+
 ---
 sidebar_label: integertracker
 title: whylogs.core.statistics.datatypes.integertracker
@@ -14,13 +25,13 @@ Track statistics for integers
 Parameters
 ---------
 min
-    Current min value
+Current min value
 max
-    Current max value
+Current max value
 sum
-    Sum of the numbers
+Sum of the numbers
 count
-    Total count of numbers
+Total count of numbers
 
 #### set\_defaults
 
@@ -57,12 +68,12 @@ Merge values of another IntTracker with this one.
 Parameters
 ----------
 other : IntTracker
-    Other tracker
+Other tracker
 
 Returns
 -------
 new : IntTracker
-    New, merged tracker
+New, merged tracker
 
 #### to\_protobuf
 

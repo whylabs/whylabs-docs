@@ -1,3 +1,14 @@
+# Table of Contents
+
+* [whylogs.core.statistics.counterstracker](#whylogs.core.statistics.counterstracker)
+  * [CountersTracker](#whylogs.core.statistics.counterstracker.CountersTracker)
+    * [increment\_count](#whylogs.core.statistics.counterstracker.CountersTracker.increment_count)
+    * [increment\_bool](#whylogs.core.statistics.counterstracker.CountersTracker.increment_bool)
+    * [increment\_null](#whylogs.core.statistics.counterstracker.CountersTracker.increment_null)
+    * [merge](#whylogs.core.statistics.counterstracker.CountersTracker.merge)
+    * [to\_protobuf](#whylogs.core.statistics.counterstracker.CountersTracker.to_protobuf)
+    * [from\_protobuf](#whylogs.core.statistics.counterstracker.CountersTracker.from_protobuf)
+
 ---
 sidebar_label: counterstracker
 title: whylogs.core.statistics.counterstracker
@@ -14,11 +25,11 @@ Class to keep track of the counts of various data types
 Parameters
 ----------
 count : int, optional
-    Current number of objects
+Current number of objects
 true_count : int, optional
-    Number of boolean values
+Number of boolean values
 null_count : int, optional
-    Number of nulls encountered
+Number of nulls encountered
 
 #### increment\_count
 
@@ -55,12 +66,12 @@ Merge another counter tracker with this one
 Returns
 -------
 new_tracker : CountersTracker
-    The merged tracker
+The merged tracker
 
 #### to\_protobuf
 
 ```python
- | to_protobuf()
+ | to_protobuf(null_count=0)
 ```
 
 Return the object serialized as a protobuf message

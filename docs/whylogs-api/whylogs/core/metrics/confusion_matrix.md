@@ -1,3 +1,11 @@
+# Table of Contents
+
+* [whylogs.core.metrics.confusion\_matrix](#whylogs.core.metrics.confusion_matrix)
+  * [ConfusionMatrix](#whylogs.core.metrics.confusion_matrix.ConfusionMatrix)
+    * [add](#whylogs.core.metrics.confusion_matrix.ConfusionMatrix.add)
+    * [merge](#whylogs.core.metrics.confusion_matrix.ConfusionMatrix.merge)
+    * [to\_protobuf](#whylogs.core.metrics.confusion_matrix.ConfusionMatrix.to_protobuf)
+
 ---
 sidebar_label: confusion_matrix
 title: whylogs.core.metrics.confusion_matrix
@@ -30,15 +38,15 @@ Function adds predictions and targets to confusion matrix with scores.
 
 **Arguments**:
 
-  predictions (List[Union[str, int, bool]]):
-  targets (List[Union[str, int, bool]]):
-  scores (List[float]):
-  
+predictions (List[Union[str, int, bool]]):
+targets (List[Union[str, int, bool]]):
+scores (List[float]):
+
 
 **Raises**:
 
 - `NotImplementedError` - in case targets do not fall into binary or
-  multiclass suport
+multiclass suport
 - `ValueError` - incase missing validation or predictions
 
 #### merge

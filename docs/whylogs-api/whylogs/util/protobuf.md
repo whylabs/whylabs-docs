@@ -1,3 +1,13 @@
+# Table of Contents
+
+* [whylogs.util.protobuf](#whylogs.util.protobuf)
+  * [message\_to\_json](#whylogs.util.protobuf.message_to_json)
+  * [message\_to\_dict](#whylogs.util.protobuf.message_to_dict)
+  * [multi\_msg\_reader](#whylogs.util.protobuf.multi_msg_reader)
+  * [read\_multi\_msg](#whylogs.util.protobuf.read_multi_msg)
+  * [write\_multi\_msg](#whylogs.util.protobuf.write_multi_msg)
+  * [repr\_message](#whylogs.util.protobuf.repr_message)
+
 ---
 sidebar_label: protobuf
 title: whylogs.util.protobuf
@@ -40,15 +50,15 @@ See also: `write_multi_msg()`
 Parameters
 ----------
 f : str, file-object
-    Filename or open file object to read from
+Filename or open file object to read from
 msg_class : class
-    The Protobuf message class, gets instantiated with a call to
-    `msg_class()`
+The Protobuf message class, gets instantiated with a call to
+`msg_class()`
 
 Returns
 -------
 msg_iterator
-    Iterator which returns protobuf messages
+Iterator which returns protobuf messages
 
 #### read\_multi\_msg
 
@@ -69,16 +79,16 @@ Write a list (or iterator) of protobuf messages to a file.
 
 The multi-message file format is a binary format with:
 
-    &lt;varint MessageBytesSize&gt;&lt;message&gt;
+&lt;varint MessageBytesSize&gt;&lt;message&gt;
 
 Which is repeated, where the len(message) in bytes is `MessageBytesSize`
 
 Parameters
 ----------
 msgs : list, iterable
-    Protobuf messages to write to disk
+Protobuf messages to write to disk
 f : str, file-object
-    Filename or open binary file object to write to
+Filename or open binary file object to write to
 
 #### repr\_message
 
@@ -93,14 +103,14 @@ message class.
 Parameters
 ----------
 x : google.protobuf.message.Message
-    Message to preview
+Message to preview
 indent : int
-    Indentation
+Indentation
 display : bool
-    If True, print the message and return `None`.  Else, return a string.
+If True, print the message and return `None`.  Else, return a string.
 
 Returns
 -------
 msg : str, None
-    If `display == False`, return the message, else return None.
+If `display == False`, return the message, else return None.
 

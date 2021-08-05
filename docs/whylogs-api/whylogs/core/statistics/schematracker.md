@@ -1,3 +1,16 @@
+# Table of Contents
+
+* [whylogs.core.statistics.schematracker](#whylogs.core.statistics.schematracker)
+  * [SchemaTracker](#whylogs.core.statistics.schematracker.SchemaTracker)
+    * [track](#whylogs.core.statistics.schematracker.SchemaTracker.track)
+    * [get\_count](#whylogs.core.statistics.schematracker.SchemaTracker.get_count)
+    * [infer\_type](#whylogs.core.statistics.schematracker.SchemaTracker.infer_type)
+    * [merge](#whylogs.core.statistics.schematracker.SchemaTracker.merge)
+    * [copy](#whylogs.core.statistics.schematracker.SchemaTracker.copy)
+    * [to\_protobuf](#whylogs.core.statistics.schematracker.SchemaTracker.to_protobuf)
+    * [from\_protobuf](#whylogs.core.statistics.schematracker.SchemaTracker.from_protobuf)
+    * [to\_summary](#whylogs.core.statistics.schematracker.SchemaTracker.to_summary)
+
 ---
 sidebar_label: schematracker
 title: whylogs.core.statistics.schematracker
@@ -14,8 +27,8 @@ Track information about a column&#x27;s schema and present datatypes
 Paramters
 ---------
 type_counts : dict
-    If specified, a dictionary containing information about the counts of
-    all data types.
+If specified, a dictionary containing information about the counts of
+all data types.
 
 #### track
 
@@ -44,7 +57,7 @@ Generate a guess at what type the tracked values are.
 Returns
 -------
 type_guess : object
-    The guess tome.  See `InferredType.Type` for candidates
+The guess tome.  See `InferredType.Type` for candidates
 
 #### merge
 
@@ -62,7 +75,7 @@ other : SchemaTracker
 Returns
 -------
 merged : SchemaTracker
-    Merged tracker
+Merged tracker
 
 #### copy
 
@@ -88,7 +101,7 @@ message : SchemaMessage
 
 ```python
  | @staticmethod
- | from_protobuf(message)
+ | from_protobuf(message, legacy_null_count=0)
 ```
 
 Load from a protobuf message
@@ -108,5 +121,5 @@ Generate a summary of the statistics
 Returns
 -------
 summary : SchemaSummary
-    Protobuf summary message.
+Protobuf summary message.
 

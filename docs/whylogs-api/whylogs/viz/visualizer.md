@@ -1,3 +1,9 @@
+# Table of Contents
+
+* [whylogs.viz.visualizer](#whylogs.viz.visualizer)
+  * [ProfileVisualizer](#whylogs.viz.visualizer.ProfileVisualizer)
+    * [\_\_init\_\_](#whylogs.viz.visualizer.ProfileVisualizer.__init__)
+
 ---
 sidebar_label: visualizer
 title: whylogs.viz.visualizer

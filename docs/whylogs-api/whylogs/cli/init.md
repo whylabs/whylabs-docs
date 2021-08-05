@@ -1,3 +1,8 @@
+# Table of Contents
+
+* [whylogs.cli.init](#whylogs.cli.init)
+  * [init](#whylogs.cli.init.init)
+
 ---
 sidebar_label: init
 title: whylogs.cli.init
