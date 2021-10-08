@@ -50,6 +50,13 @@ jobs:
           echo $URL
           echo ::set-output name=url::$(echo $URL)
         shell: bash
-      - name: Print draft url 📝
-        run: echo "The selected color is ${{ steps.draft-url.outputs.url }}"
-        shell: bash
+      - uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            **Latest preview link**
+            🌏 ${{ steps.draft-url.outputs.url }}
+            !
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]'
+          allow-repeats: false # This is the default
+
