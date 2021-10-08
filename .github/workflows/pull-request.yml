@@ -38,8 +38,10 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
       - name: Extract draft url 📝
+        id: draft-url
         run: |
-          cat output.log
           URL=$(cat output.log | fgrep "Website Draft URL")
           echo $URL
-
+          echo '::set-output name=DRAFT_URL::$URL'
+      - name: Print draft url 📝
+        run: echo "The selected color is ${{ steps.draft-url.outputs.DRAFT_URL }}"
