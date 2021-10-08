@@ -33,7 +33,10 @@ jobs:
       - name: Build 🛠
         run: yarn build
       - name: Deploy preview🔎
-        run: yarn deploy:preview
+        run: yarn deploy:preview | tee output.log
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      - name: Extract draft url 📝
+        run: cat output.log | fgrep "Website Draft URL" | echo
+      
