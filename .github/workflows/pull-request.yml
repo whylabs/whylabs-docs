@@ -54,8 +54,9 @@ jobs:
         with:
           message: |
             **Latest preview link**
-            🌏 ${{ steps.draft-url.outputs.url }}
-            !
+            
+            Please check out the preview link to ensure that the doc site renders correctly
+            🌏 ${{ steps.draft-url.outputs.url }}!
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]'
           allow-repeats: false # This is the default
