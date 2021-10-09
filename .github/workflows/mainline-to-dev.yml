@@ -5,7 +5,7 @@ on:
     branches: [ mainline ]
 
 jobs:
-  build:
+  release-dev:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
