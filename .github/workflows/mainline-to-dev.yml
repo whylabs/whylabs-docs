@@ -32,3 +32,6 @@ jobs:
       run: yarn build
     - name: Deploy beta⛳️
       run: yarn deploy:beta
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
