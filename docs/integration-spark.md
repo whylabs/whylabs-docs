@@ -73,7 +73,7 @@ from whyspark import new_profiling_session
 raw_df = spark.read.option("header", "true").csv("/databricks-datasets/timeseries/Fires/Fire_Department_Calls_for_Service.csv")
 df = raw_df.withColumn("call_date", to_timestamp(col("Call Date"), "MM/dd/YYYY"))
 
-profiles = new_profiling_session(newProfilingSession("profilingSession"), name="fire_station_calls", time_colum="call_date") \
+profiles = df.new_profiling_session(newProfilingSession("profilingSession"), name="fire_station_calls", time_colum="call_date") \
                  .groupBy("City", "Priority") \
                  .aggProfiles()
 pdf = profiles.toPandas() # you get a Pandas dataset profile of whylogs
